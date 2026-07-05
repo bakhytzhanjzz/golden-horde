@@ -1,0 +1,102 @@
+[
+  {
+    "id": "otrar",
+    "name": { "en": "Otrar", "kz": "Отырар", "ru": "Отрар" },
+    "type": "city",
+    "lat": 42.83,
+    "lng": 68.32,
+    "founded": 100,
+    "destroyed": 1750,
+    "peak_period": [900, 1220],
+    "story": "A great Silk Road oasis city at the meeting point of the Arys and Syr Darya rivers, and the birthplace of the philosopher al-Farabi. In 1218 its governor Inalchuq seized and executed a trade caravan sent by Genghis Khan, accusing its merchants of spying. Genghis Khan's demand for justice was answered with an insult, and in retaliation the Mongols laid siege to Otrar for five months in 1219-1220. When the city finally fell, Inalchuq was executed and much of the population was killed - the event historians call the spark of the entire Mongol invasion of Central Asia.",
+    "fun_fact": "The Mongol conqueror Timur (Tamerlane) died in Otrar in January 1405, just as he was setting out on a planned campaign against Ming China.",
+    "image": "/images/sites/otrar.jpg",
+    "quiz": {
+      "question": "What event triggered the Mongol invasion that destroyed Otrar in 1219?",
+      "options": [
+        "A border dispute with the Kazakh Khanate",
+        "The execution of a Mongol trade caravan by the city's governor",
+        "A refusal to pay tribute to Genghis Khan",
+        "An earthquake that weakened the city walls"
+      ],
+      "answer": 1
+    }
+  },
+  {
+    "id": "sygnak",
+    "name": { "en": "Sygnak", "kz": "Сығанақ", "ru": "Сыгнак" },
+    "type": "city",
+    "lat": 44.16,
+    "lng": 66.96,
+    "founded": 900,
+    "destroyed": 1800,
+    "peak_period": [1250, 1450],
+    "story": "Known to medieval chroniclers as 'the oasis of the Kipchak steppes,' Sygnak sat on the lower Syr Darya and grew rich from Silk Road trade long before the Mongols arrived. Jochi Khan's army besieged and captured it in 1219 after the city resisted for seven days. Rebuilt under Mongol rule, Sygnak rose again to become the 14th-century capital of the White Horde (Ak Orda), the eastern wing of the Golden Horde, minting its own coins and hosting the courts of khans such as Urus Khan.",
+    "fun_fact": "Sygnak later became closely tied to the founding of the Kazakh Khanate - the ruler Abu'l-Khayr Khan is said to be buried there.",
+    "image": "/images/sites/sygnak.jpg",
+    "quiz": {
+      "question": "Sygnak served as the 14th-century capital of which khanate?",
+      "options": ["The Crimean Khanate", "The White Horde (Ak Orda)", "The Nogai Horde", "The Ilkhanate"],
+      "answer": 1
+    }
+  },
+  {
+    "id": "ulytau",
+    "name": { "en": "Ulytau", "kz": "Ұлытау", "ru": "Улытау" },
+    "type": "city",
+    "lat": 48.75,
+    "lng": 67.05,
+    "founded": 1200,
+    "destroyed": 1502,
+    "peak_period": [1220, 1400],
+    "story": "A sacred mountain region in central Kazakhstan rather than a single city, Ulytau is closely tied to the founding of Jochi's Ulus (the Golden Horde) - it is traditionally regarded as containing Jochi Khan's mausoleum. In 1391, during his great campaign against Khan Tokhtamysh, the conqueror Timur passed through Ulytau and had an inscription carved into a rock face commemorating his march - the 'Timur stone,' one of the few contemporary inscriptions left by Timur himself anywhere in his empire.",
+    "fun_fact": "Kazakhstan's president has called Ulytau 'the golden cradle of the Kazakh people' for its deep symbolic role in national memory.",
+    "image": "/images/sites/ulytau.jpg",
+    "quiz": {
+      "question": "What did the conqueror Timur leave behind at Ulytau in 1391?",
+      "options": ["A palace", "A carved rock inscription commemorating his campaign", "A mint that produced Golden Horde coins", "A defeated garrison"],
+      "answer": 1
+    }
+  },
+  {
+    "id": "saraishyk",
+    "name": { "en": "Saraishyk", "kz": "Сарайшық", "ru": "Сарайчик" },
+    "type": "city",
+    "lat": 47.04,
+    "lng": 51.87,
+    "founded": 1242,
+    "destroyed": 1580,
+    "peak_period": [1280, 1450],
+    "story": "Founded in the early decades of the Golden Horde on the Ural (Zhaiyk) river, Saraishyk grew into a major administrative and trade hub linking the Volga capitals to Khwarazm, Iran, India, and China. The Arab traveler Ibn Battuta stayed here in 1334 and described river ferries that reminded him of Baghdad. The city hosted the courts and mausoleums of several khans, and later became the capital of the Nogai Horde, before being destroyed by Cossack raids in 1580.",
+    "fun_fact": "Excavations at Saraishyk have revealed a pressurized ceramic water-pipe system and sewage network - remarkably advanced urban infrastructure for its time.",
+    "image": "/images/sites/saraishyk.jpg",
+    "quiz": {
+      "question": "Which famous traveler stayed in Saraishyk in 1334 and compared its river ferries to Baghdad?",
+      "options": ["Marco Polo", "William of Rubruck", "Ibn Battuta", "Afanasy Nikitin"],
+      "answer": 2
+    }
+  },
+  {
+    "id": "sarai-batu",
+    "name": { "en": "Sarai (Sarai-Batu / New Sarai)", "kz": "Сарай", "ru": "Сарай" },
+    "type": "city",
+    "lat": 46.87,
+    "lng": 47.35,
+    "founded": 1254,
+    "destroyed": 1502,
+    "peak_period": [1300, 1360],
+    "story": "The Golden Horde's capital on the lower Volga, first built by Batu Khan and mentioned by the traveler William of Rubruck in 1253-54. Under Khan Ozbeg a new capital, New Sarai, rose nearby and became one of the largest cities of the medieval world, with estimates of its population reaching into the hundreds of thousands at its height. Timur burned Sarai to the ground in the winter of 1395-96 during his war with Khan Tokhtamysh; the city partially recovered, but a final sack by the Crimean khan in June 1502 marked the symbolic end of the Golden Horde itself.",
+    "fun_fact": "Poets lived and worked in Sarai's court, and archaeologists have even found an astrolabe there - evidence of the city's scientific and cultural life, not just its political power.",
+    "image": "/images/sites/sarai.jpg",
+    "quiz": {
+      "question": "What happened to Sarai in 1502?",
+      "options": [
+        "It was rebuilt as the capital of a new empire",
+        "It was sacked by the Crimean khan, marking the symbolic end of the Golden Horde",
+        "It became the capital of the Russian Tsardom",
+        "It was abandoned due to river flooding"
+      ],
+      "answer": 1
+    }
+  }
+]

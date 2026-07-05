@@ -1,0 +1,60 @@
+[
+  {
+    "id": "silk-road-steppe",
+    "name": { "en": "Great Silk Road (Steppe Branch)", "kz": "Ұлы Жібек жолы", "ru": "Великий шёлковый путь" },
+    "route_type": "trade",
+    "active_from": 1240,
+    "active_to": 1502,
+    "story": "The northern, steppe branch of the Silk Road, threading through the Syr Darya oasis cities of Otrar and Sygnak, on to Saraishyk on the Ural river, and finally to the Volga capital at Sarai. Caravans of silk, spices, and ceramics from China and Central Asia passed along this chain of cities on their way west — making the Horde the crucial middleman of Eurasian trade.",
+    "fun_fact": "A single caravan could number in the thousands of camels, moving across the steppe like a small mobile city.",
+    "stops": [
+      { "city": "otrar" },
+      { "city": "sygnak" },
+      { "city": "saraishyk" },
+      { "city": "sarai-batu" }
+    ]
+  },
+  {
+    "id": "volga-trade-route",
+    "name": { "en": "Volga Trade Route", "kz": "Еділ сауда жолы", "ru": "Волжский торговый путь" },
+    "route_type": "trade",
+    "active_from": 1240,
+    "active_to": 1502,
+    "story": "The economic spine of the Golden Horde. From the capital at Sarai, goods, silver, and furs moved up the Volga (Itil) through Bolgar toward the northern forest lands, linking the Horde to the Rus' principalities, Novgorod, and the Baltic. Whoever controlled this river controlled the wealth of the steppe.",
+    "fun_fact": "Silver dirhams minted at Sarai have been found as far away as Scandinavia and the British Isles, carried along this route.",
+    "stops": [
+      { "city": "sarai-batu" },
+      { "lat": 54.97, "lng": 49.03, "label": "Bolgar" },
+      { "lat": 56.32, "lng": 44.0, "label": "Northern Rus'" }
+    ]
+  },
+  {
+    "id": "batu-western-campaign",
+    "name": { "en": "Batu's Western Campaign", "kz": "Батудың батыс жорығы", "ru": "Западный поход Батыя" },
+    "route_type": "military",
+    "active_from": 1236,
+    "active_to": 1242,
+    "story": "The great Mongol invasion of Europe led by Batu Khan and the general Subutai. From the lower Volga the army swept west, crushed the Rus' principalities, sacked Kyiv in 1240, and pushed into Poland and Hungary — reaching the gates of Central Europe before turning back on news of the Great Khan's death.",
+    "fun_fact": "The invasion halted not because it was defeated, but because Ögedei Khan died in 1241, and the princes rode home to elect his successor.",
+    "stops": [
+      { "city": "sarai-batu" },
+      { "lat": 50.45, "lng": 30.52, "label": "Kyiv" },
+      { "lat": 47.5, "lng": 19.04, "label": "Hungary" }
+    ]
+  },
+  {
+    "id": "yam-postal-relay",
+    "name": { "en": "Yam Postal Relay", "kz": "Ям (жәм) байланыс жүйесі", "ru": "Ямская почтовая система" },
+    "route_type": "postal",
+    "active_from": 1240,
+    "active_to": 1440,
+    "story": "The yam was the Horde's imperial postal and relay system — a network of way-stations, each stocked with fresh horses, spaced roughly a day's ride apart. From Sarai it reached across the steppe through Saraishyk and the sacred region of Ulytau to the eastern cities, keeping the khan connected to his vast domains.",
+    "fun_fact": "A courier could reportedly cover 200–300 km in a day by switching to a fresh horse at each station — the medieval equivalent of express mail.",
+    "stops": [
+      { "city": "sarai-batu" },
+      { "city": "saraishyk" },
+      { "city": "ulytau" },
+      { "city": "sygnak" }
+    ]
+  }
+]

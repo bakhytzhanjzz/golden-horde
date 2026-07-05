@@ -1,0 +1,32 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "year": 1240,
+        "name": "Golden Horde (Ulus Jochi) — Batu's conquests",
+        "note": "PLACEHOLDER extent — replace with real historical-basemaps GeoJSON."
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [30.0, 48.0],
+            [35.0, 52.0],
+            [45.0, 55.0],
+            [60.0, 56.0],
+            [75.0, 54.0],
+            [78.0, 50.0],
+            [72.0, 45.0],
+            [60.0, 43.0],
+            [50.0, 42.0],
+            [40.0, 44.0],
+            [32.0, 45.0],
+            [30.0, 48.0]
+          ]
+        ]
+      }
+    }
+  ]
+}
