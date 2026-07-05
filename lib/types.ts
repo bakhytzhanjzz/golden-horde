@@ -20,7 +20,7 @@ export type Quiz = {
   answer: number;
 };
 
-export type SiteType = "city" | "battle";
+export type SiteType = "city" | "battle" | "capital" | "sacred" | "port";
 
 export type RouteType = "trade" | "military" | "postal";
 

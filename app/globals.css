@@ -120,3 +120,25 @@ body {
     animation: none;
   }
 }
+
+/* ── Chat button pulse ────────────────────────────────────────────────── */
+@keyframes gh-chat-pulse {
+  0%, 100% {
+    box-shadow: 0 4px 20px rgba(139,94,26,0.55), 0 0 0 0 rgba(200,150,62,0.4);
+  }
+  50% {
+    box-shadow: 0 4px 20px rgba(139,94,26,0.55), 0 0 0 10px rgba(200,150,62,0);
+  }
+}
+
+/* ── Streaming cursor blink ───────────────────────────────────────────── */
+@keyframes gh-blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #chat-open-btn {
+    animation: none;
+  }
+}

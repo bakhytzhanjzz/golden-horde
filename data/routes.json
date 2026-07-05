@@ -3,58 +3,90 @@
     "id": "silk-road-steppe",
     "name": { "en": "Great Silk Road (Steppe Branch)", "kz": "Ұлы Жібек жолы", "ru": "Великий шёлковый путь" },
     "route_type": "trade",
-    "active_from": 1240,
-    "active_to": 1502,
-    "story": "The northern, steppe branch of the Silk Road, threading through the Syr Darya oasis cities of Otrar and Sygnak, on to Saraishyk on the Ural river, and finally to the Volga capital at Sarai. Caravans of silk, spices, and ceramics from China and Central Asia passed along this chain of cities on their way west — making the Horde the crucial middleman of Eurasian trade.",
+    "active_from": 1240, "active_to": 1502,
+    "story": "The northern, steppe branch of the Silk Road, threading through the Syr Darya oasis cities of Otrar and Sygnak, on to Saraishyk on the Ural river, and finally to the Volga capital at Sarai. Caravans of silk, spices, and ceramics from China and Central Asia passed along this chain of cities on their way west - making the Horde the crucial middleman of Eurasian trade.",
     "fun_fact": "A single caravan could number in the thousands of camels, moving across the steppe like a small mobile city.",
-    "stops": [
-      { "city": "otrar" },
-      { "city": "sygnak" },
-      { "city": "saraishyk" },
-      { "city": "sarai-batu" }
-    ]
+    "stops": [ { "city": "otrar" }, { "city": "sygnak" }, { "city": "saraishyk" }, { "city": "sarai-batu" } ]
   },
   {
     "id": "volga-trade-route",
     "name": { "en": "Volga Trade Route", "kz": "Еділ сауда жолы", "ru": "Волжский торговый путь" },
     "route_type": "trade",
-    "active_from": 1240,
-    "active_to": 1502,
-    "story": "The economic spine of the Golden Horde. From the capital at Sarai, goods, silver, and furs moved up the Volga (Itil) through Bolgar toward the northern forest lands, linking the Horde to the Rus' principalities, Novgorod, and the Baltic. Whoever controlled this river controlled the wealth of the steppe.",
+    "active_from": 1240, "active_to": 1502,
+    "story": "The economic spine of the Golden Horde. From the capital at Sarai, goods, silver, and furs moved up the Volga (Itil) through Ukek and Bolgar toward the northern forest lands, linking the Horde to the Rus' principalities, Novgorod, and the Baltic. Whoever controlled this river controlled the wealth of the steppe.",
     "fun_fact": "Silver dirhams minted at Sarai have been found as far away as Scandinavia and the British Isles, carried along this route.",
-    "stops": [
-      { "city": "sarai-batu" },
-      { "lat": 54.97, "lng": 49.03, "label": "Bolgar" },
-      { "lat": 56.32, "lng": 44.0, "label": "Northern Rus'" }
-    ]
+    "stops": [ { "city": "sarai-batu" }, { "city": "ukek" }, { "city": "bolgar" }, { "lat": 56.32, "lng": 44.0, "label": "Northern Rus'" } ]
   },
   {
     "id": "batu-western-campaign",
     "name": { "en": "Batu's Western Campaign", "kz": "Батудың батыс жорығы", "ru": "Западный поход Батыя" },
     "route_type": "military",
-    "active_from": 1236,
-    "active_to": 1242,
-    "story": "The great Mongol invasion of Europe led by Batu Khan and the general Subutai. From the lower Volga the army swept west, crushed the Rus' principalities, sacked Kyiv in 1240, and pushed into Poland and Hungary — reaching the gates of Central Europe before turning back on news of the Great Khan's death.",
-    "fun_fact": "The invasion halted not because it was defeated, but because Ögedei Khan died in 1241, and the princes rode home to elect his successor.",
-    "stops": [
-      { "city": "sarai-batu" },
-      { "lat": 50.45, "lng": 30.52, "label": "Kyiv" },
-      { "lat": 47.5, "lng": 19.04, "label": "Hungary" }
-    ]
+    "active_from": 1236, "active_to": 1242,
+    "story": "The great Mongol invasion of Europe led by Batu Khan and the general Subutai. From the lower Volga the army swept west, crushed the Rus' principalities, sacked Kyiv in 1240, then split to smash coalitions at Legnica and Mohi in 1241 before reaching the gates of Central Europe - and turning back on news of the Great Khan's death.",
+    "fun_fact": "The invasion halted not because it was defeated, but because Ogedei Khan died in 1241, and the princes rode home to elect his successor.",
+    "stops": [ { "city": "sarai-batu" }, { "city": "kyiv-siege" }, { "city": "battle-legnica" }, { "city": "battle-mohi" } ]
   },
   {
     "id": "yam-postal-relay",
     "name": { "en": "Yam Postal Relay", "kz": "Ям (жәм) байланыс жүйесі", "ru": "Ямская почтовая система" },
     "route_type": "postal",
-    "active_from": 1240,
-    "active_to": 1440,
-    "story": "The yam was the Horde's imperial postal and relay system — a network of way-stations, each stocked with fresh horses, spaced roughly a day's ride apart. From Sarai it reached across the steppe through Saraishyk and the sacred region of Ulytau to the eastern cities, keeping the khan connected to his vast domains.",
-    "fun_fact": "A courier could reportedly cover 200–300 km in a day by switching to a fresh horse at each station — the medieval equivalent of express mail.",
-    "stops": [
-      { "city": "sarai-batu" },
-      { "city": "saraishyk" },
-      { "city": "ulytau" },
-      { "city": "sygnak" }
-    ]
+    "active_from": 1240, "active_to": 1440,
+    "story": "The yam was the Horde's imperial postal and relay system - a network of way-stations, each stocked with fresh horses, spaced roughly a day's ride apart. From Sarai it reached across the steppe through Saraishyk and the sacred region of Ulytau to the eastern cities, keeping the khan connected to his vast domains.",
+    "fun_fact": "A courier could reportedly cover 200-300 km in a day by switching to a fresh horse at each station - the medieval equivalent of express mail.",
+    "stops": [ { "city": "sarai-batu" }, { "city": "saraishyk" }, { "city": "ulytau" }, { "city": "sygnak" } ]
+  },
+  {
+    "id": "crimean-trade-route",
+    "name": { "en": "Crimean-Genoese Trade Route", "kz": "Қырым-Генуя сауда жолы", "ru": "Крымско-генуэзский торговый путь" },
+    "route_type": "trade",
+    "active_from": 1270, "active_to": 1475,
+    "story": "Linking Sarai down the Don to the Genoese and Venetian trading colonies of Azaq (Tana) and Caffa in Crimea, this route tied the Golden Horde directly into Mediterranean commerce. Slaves, furs, and grain moved south while Italian silver and luxury goods moved north - a partnership of steppe khans and Italian merchant republics that lasted two centuries.",
+    "fun_fact": "During the 1346 siege of Caffa, Mongol forces are believed to have catapulted plague victims over the city walls - one of history's earliest recorded uses of biological warfare, and a likely vector for the Black Death's spread into Europe.",
+    "stops": [ { "city": "sarai-batu" }, { "city": "azaq" }, { "city": "solkhat" }, { "lat": 45.03, "lng": 35.38, "label": "Caffa" } ]
+  },
+  {
+    "id": "khwarezm-silk-route",
+    "name": { "en": "Khwarezm Route", "kz": "Хорезм жолы", "ru": "Хорезмийский путь" },
+    "route_type": "trade",
+    "active_from": 1240, "active_to": 1388,
+    "story": "Connected the Volga capital to the wealthy oasis city of Urgench in Khwarezm, a key southern gateway to Persia and the wider Islamic world. This route carried some of the richest caravan traffic in the Horde's economy, but was repeatedly disrupted by conflict between the Golden Horde and the Timurid Empire before Timur destroyed Urgench outright in 1388.",
+    "fun_fact": "Urgench was so wealthy before its destruction that medieval geographers ranked it among the great cities of the Islamic world, on par with Bukhara and Samarkand.",
+    "stops": [ { "city": "sarai-batu" }, { "city": "saraishyk" }, { "lat": 41.55, "lng": 60.63, "label": "Urgench" } ]
+  },
+  {
+    "id": "mamai-kulikovo-campaign",
+    "name": { "en": "Mamai's Campaign to Kulikovo", "kz": "Мамайдың Куликово жорығы", "ru": "Поход Мамая на Куликово поле" },
+    "route_type": "military",
+    "active_from": 1380, "active_to": 1380,
+    "story": "The warlord Mamai, ruling a fractured rump of the Golden Horde from the Crimean steppe rather than as a legitimate khan himself, marched north to punish Muscovy for withholding tribute. His army was defeated at Kulikovo Field in 1380 by Dmitry Donskoi's coalition - a symbolic turning point in Rus' resistance to the Horde, even though it did not end Mongol overlordship.",
+    "fun_fact": "Mamai's defeat opened the door for his rival Tokhtamysh to unite the Horde and reassert control - including sacking Moscow himself just two years later.",
+    "stops": [ { "city": "solkhat" }, { "city": "battle-kulikovo" } ]
+  },
+  {
+    "id": "timur-tokhtamysh-wars",
+    "name": { "en": "Timur's Campaigns Against Tokhtamysh", "kz": "Темірдің Тоқтамысқа қарсы жорықтары", "ru": "Походы Тимура против Тохтамыша" },
+    "route_type": "military",
+    "active_from": 1391, "active_to": 1396,
+    "story": "Timur's two great punitive campaigns against Khan Tokhtamysh - first crushing him at the Kondurcha river in 1391, then annihilating his army at the Terek in 1395 before turning south to systematically raze Sarai, Hajji Tarkhan, Ukek, and Azaq. These campaigns broke the Golden Horde's economic and military power for good, setting it on its path toward final collapse in 1502.",
+    "fun_fact": "Timur never tried to hold or rule the Golden Horde's territory himself - he wanted it broken and unable to threaten his own empire, not annexed.",
+    "stops": [ { "city": "battle-kondurcha" }, { "city": "battle-terek" }, { "city": "ukek" }, { "city": "hajji-tarkhan" }, { "city": "azaq" }, { "city": "sarai-batu" } ]
+  },
+  {
+    "id": "edigu-moscow-raid",
+    "name": { "en": "Edigu's Raid on Moscow", "kz": "Едігенің Мәскеуге жорығы", "ru": "Поход Едигея на Москву" },
+    "route_type": "military",
+    "active_from": 1408, "active_to": 1408,
+    "story": "The powerful emir Edigu, the real power behind the Horde's throne in the early 15th century, marched on Moscow in 1408 to punish Grand Prince Vasily I for withholding tribute. He besieged the city but withdrew after receiving a large payoff rather than storming it outright - a reminder that the Horde could still project serious military power even during its long decline.",
+    "fun_fact": "Edigu ruled through a series of puppet khans rather than claiming the throne himself, much like his rival Mamai had a generation earlier.",
+    "stops": [ { "city": "sarai-batu" }, { "lat": 55.75, "lng": 37.62, "label": "Moscow" } ]
+  },
+  {
+    "id": "blue-waters-campaign",
+    "name": { "en": "Lithuania's Blue Waters Campaign", "kz": "Литваның Көк су жорығы", "ru": "Поход Литвы на Синие Воды" },
+    "route_type": "military",
+    "active_from": 1362, "active_to": 1362,
+    "story": "Grand Duke Algirdas of Lithuania pushed deep into Golden Horde territory during the Horde's internal 'Great Troubles,' defeating a Jochid army near the Blue Waters river. Unlike most Rus' campaigns against the Horde, this one resulted in permanent territorial loss - Lithuania annexed much of what is now central and southern Ukraine in the aftermath.",
+    "fun_fact": "This campaign happened while the Golden Horde had no fewer than four rival khans simultaneously claiming its throne.",
+    "stops": [ { "lat": 54.68, "lng": 25.28, "label": "Vilnius" }, { "city": "battle-blue-waters" }, { "city": "kyiv-siege" } ]
   }
 ]

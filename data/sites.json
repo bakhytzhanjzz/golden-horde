@@ -1,13 +1,20 @@
 [
   {
     "id": "otrar",
-    "name": { "en": "Otrar", "kz": "Отырар", "ru": "Отрар" },
+    "name": {
+      "en": "Otrar",
+      "kz": "Отырар",
+      "ru": "Отрар"
+    },
     "type": "city",
     "lat": 42.83,
     "lng": 68.32,
     "founded": 100,
     "destroyed": 1750,
-    "peak_period": [900, 1220],
+    "peak_period": [
+      900,
+      1220
+    ],
     "story": "A great Silk Road oasis city at the meeting point of the Arys and Syr Darya rivers, and the birthplace of the philosopher al-Farabi. In 1218 its governor Inalchuq seized and executed a trade caravan sent by Genghis Khan, accusing its merchants of spying. Genghis Khan's demand for justice was answered with an insult, and in retaliation the Mongols laid siege to Otrar for five months in 1219-1220. When the city finally fell, Inalchuq was executed and much of the population was killed - the event historians call the spark of the entire Mongol invasion of Central Asia.",
     "fun_fact": "The Mongol conqueror Timur (Tamerlane) died in Otrar in January 1405, just as he was setting out on a planned campaign against Ming China.",
     "image": "/images/sites/otrar.jpg",
@@ -24,68 +31,111 @@
   },
   {
     "id": "sygnak",
-    "name": { "en": "Sygnak", "kz": "Сығанақ", "ru": "Сыгнак" },
-    "type": "city",
+    "name": {
+      "en": "Sygnak",
+      "kz": "Сығанақ",
+      "ru": "Сыгнак"
+    },
+    "type": "capital",
     "lat": 44.16,
     "lng": 66.96,
     "founded": 900,
     "destroyed": 1800,
-    "peak_period": [1250, 1450],
+    "peak_period": [
+      1250,
+      1450
+    ],
     "story": "Known to medieval chroniclers as 'the oasis of the Kipchak steppes,' Sygnak sat on the lower Syr Darya and grew rich from Silk Road trade long before the Mongols arrived. Jochi Khan's army besieged and captured it in 1219 after the city resisted for seven days. Rebuilt under Mongol rule, Sygnak rose again to become the 14th-century capital of the White Horde (Ak Orda), the eastern wing of the Golden Horde, minting its own coins and hosting the courts of khans such as Urus Khan.",
     "fun_fact": "Sygnak later became closely tied to the founding of the Kazakh Khanate - the ruler Abu'l-Khayr Khan is said to be buried there.",
     "image": "/images/sites/sygnak.jpg",
     "quiz": {
       "question": "Sygnak served as the 14th-century capital of which khanate?",
-      "options": ["The Crimean Khanate", "The White Horde (Ak Orda)", "The Nogai Horde", "The Ilkhanate"],
+      "options": [
+        "The Crimean Khanate",
+        "The White Horde (Ak Orda)",
+        "The Nogai Horde",
+        "The Ilkhanate"
+      ],
       "answer": 1
     }
   },
   {
     "id": "ulytau",
-    "name": { "en": "Ulytau", "kz": "Ұлытау", "ru": "Улытау" },
-    "type": "city",
+    "name": {
+      "en": "Ulytau",
+      "kz": "Ұлытау",
+      "ru": "Улытау"
+    },
+    "type": "sacred",
     "lat": 48.75,
     "lng": 67.05,
     "founded": 1200,
     "destroyed": 1502,
-    "peak_period": [1220, 1400],
+    "peak_period": [
+      1220,
+      1400
+    ],
     "story": "A sacred mountain region in central Kazakhstan rather than a single city, Ulytau is closely tied to the founding of Jochi's Ulus (the Golden Horde) - it is traditionally regarded as containing Jochi Khan's mausoleum. In 1391, during his great campaign against Khan Tokhtamysh, the conqueror Timur passed through Ulytau and had an inscription carved into a rock face commemorating his march - the 'Timur stone,' one of the few contemporary inscriptions left by Timur himself anywhere in his empire.",
     "fun_fact": "Kazakhstan's president has called Ulytau 'the golden cradle of the Kazakh people' for its deep symbolic role in national memory.",
     "image": "/images/sites/ulytau.jpg",
     "quiz": {
       "question": "What did the conqueror Timur leave behind at Ulytau in 1391?",
-      "options": ["A palace", "A carved rock inscription commemorating his campaign", "A mint that produced Golden Horde coins", "A defeated garrison"],
+      "options": [
+        "A palace",
+        "A carved rock inscription commemorating his campaign",
+        "A mint that produced Golden Horde coins",
+        "A defeated garrison"
+      ],
       "answer": 1
     }
   },
   {
     "id": "saraishyk",
-    "name": { "en": "Saraishyk", "kz": "Сарайшық", "ru": "Сарайчик" },
-    "type": "city",
+    "name": {
+      "en": "Saraishyk",
+      "kz": "Сарайшық",
+      "ru": "Сарайчик"
+    },
+    "type": "port",
     "lat": 47.04,
     "lng": 51.87,
     "founded": 1242,
     "destroyed": 1580,
-    "peak_period": [1280, 1450],
+    "peak_period": [
+      1280,
+      1450
+    ],
     "story": "Founded in the early decades of the Golden Horde on the Ural (Zhaiyk) river, Saraishyk grew into a major administrative and trade hub linking the Volga capitals to Khwarazm, Iran, India, and China. The Arab traveler Ibn Battuta stayed here in 1334 and described river ferries that reminded him of Baghdad. The city hosted the courts and mausoleums of several khans, and later became the capital of the Nogai Horde, before being destroyed by Cossack raids in 1580.",
     "fun_fact": "Excavations at Saraishyk have revealed a pressurized ceramic water-pipe system and sewage network - remarkably advanced urban infrastructure for its time.",
     "image": "/images/sites/saraishyk.jpg",
     "quiz": {
       "question": "Which famous traveler stayed in Saraishyk in 1334 and compared its river ferries to Baghdad?",
-      "options": ["Marco Polo", "William of Rubruck", "Ibn Battuta", "Afanasy Nikitin"],
+      "options": [
+        "Marco Polo",
+        "William of Rubruck",
+        "Ibn Battuta",
+        "Afanasy Nikitin"
+      ],
       "answer": 2
     }
   },
   {
     "id": "sarai-batu",
-    "name": { "en": "Sarai (Sarai-Batu / New Sarai)", "kz": "Сарай", "ru": "Сарай" },
-    "type": "city",
+    "name": {
+      "en": "Sarai (Sarai-Batu / New Sarai)",
+      "kz": "Сарай",
+      "ru": "Сарай"
+    },
+    "type": "capital",
     "lat": 46.87,
     "lng": 47.35,
     "founded": 1254,
     "destroyed": 1502,
-    "peak_period": [1300, 1360],
-    "story": "The Golden Horde's capital on the lower Volga, first built by Batu Khan and mentioned by the traveler William of Rubruck in 1253-54. Under Khan Ozbeg a new capital, New Sarai, rose nearby and became one of the largest cities of the medieval world, with estimates of its population reaching into the hundreds of thousands at its height. Timur burned Sarai to the ground in the winter of 1395-96 during his war with Khan Tokhtamysh; the city partially recovered, but a final sack by the Crimean khan in June 1502 marked the symbolic end of the Golden Horde itself.",
+    "peak_period": [
+      1300,
+      1360
+    ],
+    "story": "The Golden Horde's capital on the lower Volga, first built by Batu Khan and mentioned by the traveler William of Rubruck in 1253-54. Under Khan Ozbeg a new capital, New Sarai, rose nearby and became one of the largest cities of the medieval world. Ibn Battuta, visiting in 1333, described a beautiful city of wide streets where six different peoples - Mongols, Alans, Kipchaks, Circassians, Russians, and Greeks - each held their own quarter. Timur burned Sarai to the ground in the winter of 1395-96; the city partially recovered, but a final sack by the Crimean khan in June 1502 marked the symbolic end of the Golden Horde itself.",
     "fun_fact": "Poets lived and worked in Sarai's court, and archaeologists have even found an astrolabe there - evidence of the city's scientific and cultural life, not just its political power.",
     "image": "/images/sites/sarai.jpg",
     "quiz": {
@@ -95,6 +145,546 @@
         "It was sacked by the Crimean khan, marking the symbolic end of the Golden Horde",
         "It became the capital of the Russian Tsardom",
         "It was abandoned due to river flooding"
+      ],
+      "answer": 1
+    }
+  },
+  {
+    "id": "bolgar",
+    "name": {
+      "en": "Bolgar",
+      "kz": "Болгар",
+      "ru": "Булгар"
+    },
+    "type": "capital",
+    "lat": 54.97,
+    "lng": 49.03,
+    "founded": 900,
+    "destroyed": 1431,
+    "peak_period": [
+      1240,
+      1350
+    ],
+    "story": "The former capital of Volga Bulgaria, conquered by the Mongols in 1236 during their opening campaign against the region. Rather than being erased, Bolgar was absorbed into the new order and became one of the Golden Horde's earliest and most important northern cities - among the very first places to mint coins in the name of the new khanate, tying the fur- and grain-rich north into the Horde's trade network.",
+    "fun_fact": "Bolgar minted some of the very first Golden Horde coins, even before Sarai's own mint was fully up and running.",
+    "image": "/images/sites/bolgar.jpg",
+    "quiz": {
+      "question": "What made Bolgar economically significant to the early Golden Horde?",
+      "options": [
+        "It was the khan's main residence",
+        "It minted some of the Horde's earliest coins",
+        "It was the empire's only Christian city",
+        "It controlled all river ferries on the Volga"
+      ],
+      "answer": 1
+    }
+  },
+  {
+    "id": "azaq",
+    "name": {
+      "en": "Azaq (Tana)",
+      "kz": "Азақ",
+      "ru": "Азак"
+    },
+    "type": "port",
+    "lat": 47.11,
+    "lng": 39.42,
+    "founded": 1260,
+    "destroyed": 1395,
+    "peak_period": [
+      1300,
+      1390
+    ],
+    "story": "A port at the mouth of the Don, Azaq grew into one of the Horde's busiest trading cities after Khan Mengu-Timur granted the Genoese and Venetians rights to trade here (their colony was called Tana). It became a gateway linking the steppe to the Black Sea and the Mediterranean world - and a channel through which the Black Death is believed to have spread toward Europe in the 1340s. Timur's armies sacked Azaq in 1395 as part of his campaign against Tokhtamysh.",
+    "fun_fact": "Six different peoples reportedly kept separate quarters in Sarai, and Azaq had a similarly cosmopolitan mix of Italian merchants, Mongols, and local Kipchaks living side by side.",
+    "image": "/images/sites/azaq.jpg",
+    "quiz": {
+      "question": "Which two Italian maritime republics held trading rights at Azaq (Tana)?",
+      "options": [
+        "Genoa and Venice",
+        "Pisa and Amalfi",
+        "Florence and Milan",
+        "Naples and Rome"
+      ],
+      "answer": 0
+    }
+  },
+  {
+    "id": "solkhat",
+    "name": {
+      "en": "Solkhat (Old Crimea)",
+      "kz": "Солқат",
+      "ru": "Солхат"
+    },
+    "type": "capital",
+    "lat": 45.03,
+    "lng": 35.11,
+    "founded": 1260,
+    "destroyed": null,
+    "peak_period": [
+      1300,
+      1450
+    ],
+    "story": "The administrative and political center of the Golden Horde's Crimean ulus. In 1314, Khan Ozbeg built a grand mosque here as part of his push to make Islam the state religion of the empire - a turning point in the Horde's cultural and religious identity. Solkhat sat close to the Genoese trading colony of Caffa, plugging Crimea directly into Mediterranean commerce.",
+    "fun_fact": "The 1314 mosque built by Ozbeg Khan still stands today in the modern town of Stary Krym (Old Crimea).",
+    "image": "/images/sites/solkhat.jpg",
+    "quiz": {
+      "question": "What major religious change did Khan Ozbeg mark by building a mosque in Solkhat in 1314?",
+      "options": [
+        "The adoption of Christianity",
+        "The return to Shamanism",
+        "The establishment of Islam as the Horde's state religion",
+        "The founding of a new capital"
+      ],
+      "answer": 2
+    }
+  },
+  {
+    "id": "hajji-tarkhan",
+    "name": {
+      "en": "Hajji Tarkhan",
+      "kz": "Хаджі-Тархан",
+      "ru": "Хаджи-Тархан"
+    },
+    "type": "city",
+    "lat": 46.35,
+    "lng": 48.04,
+    "founded": 1250,
+    "destroyed": 1395,
+    "peak_period": [
+      1300,
+      1390
+    ],
+    "story": "A major city in the Volga delta, listed by Ibn Battuta among the seven great cities of Khan Ozbeg's realm alongside Sarai, Solkhat, and Azaq. Timur's armies razed it in 1395 during the systematic destruction of Golden Horde cities that followed his defeat of Tokhtamysh. Its name lives on in the modern Russian city that eventually rose nearby.",
+    "fun_fact": "The modern city of Astrakhan grew up in this same delta region after the Golden Horde's fall, carrying on Hajji Tarkhan's role as a river gateway.",
+    "image": "/images/sites/hajji-tarkhan.jpg",
+    "quiz": {
+      "question": "What eventually arose in the same region as Hajji Tarkhan after the Golden Horde's collapse?",
+      "options": [
+        "Moscow",
+        "Astrakhan",
+        "Kazan",
+        "Samarkand"
+      ],
+      "answer": 1
+    }
+  },
+  {
+    "id": "ukek",
+    "name": {
+      "en": "Ukek",
+      "kz": "Үкек",
+      "ru": "Укек"
+    },
+    "type": "city",
+    "lat": 51.53,
+    "lng": 46.03,
+    "founded": 1250,
+    "destroyed": 1395,
+    "peak_period": [
+      1260,
+      1390
+    ],
+    "story": "A Volga river-crossing city roughly midway between the capital at Sarai and Bolgar to the north, Ukek grew from a nomadic waypoint into a genuine urban center with its own crafts, mixed population, and role in grain production. Like so many Golden Horde cities, it was destroyed during Timur's devastating campaign of 1395.",
+    "fun_fact": "Archaeologists believe Ukek's very name may describe the unusual shape of the riverside terrain it was built on.",
+    "image": "/images/sites/ukek.jpg",
+    "quiz": {
+      "question": "Where was Ukek located relative to the Horde's other Volga cities?",
+      "options": [
+        "On the Ural river delta",
+        "Roughly midway between Sarai and Bolgar on the Volga",
+        "Deep in the Crimean peninsula",
+        "On the Syr Darya near Sygnak"
+      ],
+      "answer": 1
+    }
+  },
+  {
+    "id": "majar",
+    "name": {
+      "en": "Majar (al-Machar)",
+      "kz": "Мажар",
+      "ru": "Маджар"
+    },
+    "type": "city",
+    "lat": 44.78,
+    "lng": 44.16,
+    "founded": 1250,
+    "destroyed": 1400,
+    "peak_period": [
+      1300,
+      1390
+    ],
+    "story": "A prosperous North Caucasus city that Ibn Battuta listed by name among the great cities of Khan Ozbeg's realm - 'al-Kafa, al-Kirim, al-Machar, Azaq, Sudaq and Khwarezm.' Positioned on trade routes linking the steppe to the Caucasus mountains and beyond, Majar shows just how far the Horde's urban network reached beyond its Volga heartland.",
+    "fun_fact": "Ibn Battuta's own travel account is one of our best sources for which cities actually mattered in the Golden Horde - Majar makes his personal list of the empire's greatest.",
+    "image": "/images/sites/majar.jpg",
+    "quiz": {
+      "question": "Which famous traveler's writings preserve Majar's place among the Golden Horde's great cities?",
+      "options": [
+        "Marco Polo",
+        "Ibn Battuta",
+        "William of Rubruck",
+        "Afanasy Nikitin"
+      ],
+      "answer": 1
+    }
+  },
+  {
+    "id": "yasi-turkestan",
+    "name": {
+      "en": "Yasi (Turkestan)",
+      "kz": "Ясы (Түркістан)",
+      "ru": "Ясы (Туркестан)"
+    },
+    "type": "sacred",
+    "lat": 43.3,
+    "lng": 68.27,
+    "founded": 900,
+    "destroyed": null,
+    "peak_period": [
+      1150,
+      1450
+    ],
+    "story": "Home to the Sufi teacher Khoja Ahmed Yasawi, whose 12th-century teachings shaped Turkic Islam across Central Asia. In 1389, Timur ordered the construction of a monumental mausoleum over Yasawi's grave as a show of piety and imperial power. The unfinished but still-towering structure turned Yasi, later renamed Turkestan, into one of the region's most important pilgrimage sites - a spiritual counterweight to the Horde's political capitals on the Volga.",
+    "fun_fact": "The Yasawi mausoleum's architecture is often cited by historians as an early example of the Timurid style that would later influence the Taj Mahal.",
+    "image": "/images/sites/yasi-turkestan.jpg",
+    "quiz": {
+      "question": "Who ordered the construction of the great mausoleum at Yasi in 1389?",
+      "options": [
+        "Batu Khan",
+        "Timur (Tamerlane)",
+        "Ozbeg Khan",
+        "Tokhtamysh"
+      ],
+      "answer": 1
+    }
+  },
+  {
+    "id": "sauran",
+    "name": {
+      "en": "Sauran",
+      "kz": "Сауран",
+      "ru": "Сауран"
+    },
+    "type": "city",
+    "lat": 43.61,
+    "lng": 68.55,
+    "founded": 1000,
+    "destroyed": 1700,
+    "peak_period": [
+      1250,
+      1500
+    ],
+    "story": "A heavily fortified Silk Road oasis city famous for its double defensive walls, Sauran sat in the same Syr Darya corridor as Otrar, Sygnak, and Yasi. In the turbulent decades after the Golden Horde's fragmentation, it briefly served as a capital during the transition period that gave rise to the Kazakh Khanate.",
+    "fun_fact": "Sauran's double-ring fortifications were considered so formidable that medieval chroniclers singled the city out for its defenses.",
+    "image": "/images/sites/sauran.jpg",
+    "quiz": {
+      "question": "What was Sauran particularly known for among Syr Darya cities?",
+      "options": [
+        "Its silk-weaving workshops",
+        "Its double defensive walls",
+        "Being the Horde's main mint",
+        "Its shipbuilding industry"
+      ],
+      "answer": 1
+    }
+  },
+  {
+    "id": "jand",
+    "name": {
+      "en": "Jand",
+      "kz": "Жент",
+      "ru": "Джент"
+    },
+    "type": "city",
+    "lat": 44.9,
+    "lng": 65.5,
+    "founded": 900,
+    "destroyed": 1400,
+    "peak_period": [
+      1000,
+      1250
+    ],
+    "story": "An old Islamic city on the lower Syr Darya, mentioned in Arab geographies long before the Mongols arrived. Jand was among the first Syr Darya cities to fall to Jochi's forces in the 1219-1220 campaign, alongside Otrar and Sygnak, as the Mongols moved to secure the river corridor before pushing further into Khwarazm.",
+    "fun_fact": "Jand's fall came so early in the Mongol invasion that it barely appears in most popular retellings - overshadowed by the more dramatic sieges of Otrar and Sygnak that followed.",
+    "image": "/images/sites/jand.jpg",
+    "quiz": {
+      "question": "What role did Jand play in the 1219-1220 Mongol campaign?",
+      "options": [
+        "It held out the longest of all Syr Darya cities",
+        "It was one of the first cities to fall as Jochi secured the river corridor",
+        "It was never attacked by the Mongols",
+        "It served as Genghis Khan's headquarters"
+      ],
+      "answer": 1
+    }
+  },
+  {
+    "id": "kyiv-siege",
+    "name": {
+      "en": "Siege of Kyiv (1240)",
+      "kz": "Киев қоршауы (1240)",
+      "ru": "Осада Киева (1240)"
+    },
+    "type": "battle",
+    "lat": 50.45,
+    "lng": 30.52,
+    "founded": 1240,
+    "destroyed": 1240,
+    "sides": {
+      "attacker": "Golden Horde (Batu Khan)",
+      "defender": "Principality of Kyiv"
+    },
+    "story": "In December 1240, Batu Khan's army besieged and sacked Kyiv, the great capital of Kyivan Rus'. The city's fall marked the peak of the western Mongol invasion and left a lasting scar on Rus' collective memory - Kyiv would not fully recover its former stature for generations.",
+    "fun_fact": "A papal envoy who passed through the ruins several years later described the ground littered with countless skulls and bones.",
+    "image": "/images/sites/kyiv-siege.jpg",
+    "quiz": {
+      "question": "Whose army sacked Kyiv in December 1240?",
+      "options": [
+        "Timur's",
+        "Batu Khan's",
+        "Tokhtamysh's",
+        "Mamai's"
+      ],
+      "answer": 1
+    }
+  },
+  {
+    "id": "battle-kalka",
+    "name": {
+      "en": "Battle of the Kalka River (1223)",
+      "kz": "Калка өзені шайқасы (1223)",
+      "ru": "Битва на реке Калке (1223)"
+    },
+    "type": "battle",
+    "lat": 47.2,
+    "lng": 37.5,
+    "founded": 1223,
+    "destroyed": 1223,
+    "sides": {
+      "attacker": "Mongol Empire (Subutai & Jebe)",
+      "defender": "Coalition of Rus' princes and Cumans"
+    },
+    "story": "Decades before the Golden Horde even existed, a Mongol reconnaissance force under Subutai and Jebe crushed a coalition of Rus' princes and their Cuman allies near the Kalka River. It was the first encounter between Mongol and Rus' forces - a preview of the far larger invasion that Batu Khan would launch fifteen years later.",
+    "fun_fact": "After the battle, the victorious Mongol commanders reportedly feasted on a platform built over the bodies of captured Rus' princes.",
+    "image": "/images/sites/battle-kalka.jpg",
+    "quiz": {
+      "question": "What was significant about the Battle of the Kalka River?",
+      "options": [
+        "It founded the Golden Horde",
+        "It was the first clash between Mongol and Rus' forces",
+        "It ended the Mongol invasion of Europe",
+        "It was fought entirely by Golden Horde troops"
+      ],
+      "answer": 1
+    }
+  },
+  {
+    "id": "battle-legnica",
+    "name": {
+      "en": "Battle of Legnica (1241)",
+      "kz": "Легница шайқасы (1241)",
+      "ru": "Битва при Легнице (1241)"
+    },
+    "type": "battle",
+    "lat": 51.21,
+    "lng": 16.16,
+    "founded": 1241,
+    "destroyed": 1241,
+    "sides": {
+      "attacker": "Mongol Empire (Baidar & Kadan)",
+      "defender": "Polish-German coalition (Duke Henry II the Pious)"
+    },
+    "story": "A Mongol detachment under Baidar and Kadan crushed a coalition of Polish and German knights in Silesia - fought the very same week as the larger Battle of Mohi in Hungary. Legnica opened much of Central Europe to Mongol raiding parties and remains one of the westernmost points the Mongol armies ever reached in force.",
+    "fun_fact": "Duke Henry II was killed in the battle, and legend holds his body was only identified afterward by a distinctive extra toe.",
+    "image": "/images/sites/battle-legnica.jpg",
+    "quiz": {
+      "question": "In what region was the Battle of Legnica fought?",
+      "options": [
+        "Hungary",
+        "Silesia (modern Poland)",
+        "Crimea",
+        "The North Caucasus"
+      ],
+      "answer": 1
+    }
+  },
+  {
+    "id": "battle-mohi",
+    "name": {
+      "en": "Battle of Mohi (1241)",
+      "kz": "Мохи шайқасы (1241)",
+      "ru": "Битва при Шайо (1241)"
+    },
+    "type": "battle",
+    "lat": 48.1,
+    "lng": 20.8,
+    "founded": 1241,
+    "destroyed": 1241,
+    "sides": {
+      "attacker": "Mongol Empire (Batu Khan & Subutai)",
+      "defender": "Kingdom of Hungary (King Bela IV)"
+    },
+    "story": "Batu Khan and Subutai's main army defeated King Bela IV of Hungary at the Sajo river, opening the Hungarian plain to devastating raids. This marked the furthest west the Mongol invasion of Europe ever reached before the army turned back the following year on news of the Great Khan Ogedei's death.",
+    "fun_fact": "The withdrawal from Europe in 1242 wasn't a retreat from defeat - it was triggered by a succession crisis thousands of kilometers away in Mongolia.",
+    "image": "/images/sites/battle-mohi.jpg",
+    "quiz": {
+      "question": "Why did the Mongol army withdraw from Europe after Mohi, rather than pressing further west?",
+      "options": [
+        "They were decisively defeated",
+        "They ran out of supplies",
+        "News arrived of the Great Khan Ogedei's death, requiring the princes to return",
+        "A plague broke out among their horses"
+      ],
+      "answer": 2
+    }
+  },
+  {
+    "id": "battle-blue-waters",
+    "name": {
+      "en": "Battle of Blue Waters (1362)",
+      "kz": "Көк су шайқасы (1362)",
+      "ru": "Битва при Синих Водах (1362)"
+    },
+    "type": "battle",
+    "lat": 48.5,
+    "lng": 30,
+    "founded": 1362,
+    "destroyed": 1362,
+    "sides": {
+      "attacker": "Grand Duchy of Lithuania (Algirdas)",
+      "defender": "Golden Horde"
+    },
+    "story": "During the Golden Horde's period of internal chaos known as the 'Great Troubles,' Grand Duke Algirdas of Lithuania pushed deep into Horde territory and defeated a Jochid force near the Blue Waters (Syniukha) river. The victory let Lithuania annex huge swaths of what is now Ukraine - a rare instance of the Horde losing territory outright rather than merely a battle.",
+    "fun_fact": "This battle happened while as many as four rival khans were simultaneously claiming the Golden Horde's throne - a measure of just how fractured the empire had become.",
+    "image": "/images/sites/battle-blue-waters.jpg",
+    "quiz": {
+      "question": "What let Lithuania win at Blue Waters and annex former Golden Horde land?",
+      "options": [
+        "A surprise alliance with Timur",
+        "The Horde's internal succession chaos ('Great Troubles')",
+        "A plague that had wiped out the Horde's army",
+        "Support from the Rus' principalities"
+      ],
+      "answer": 1
+    }
+  },
+  {
+    "id": "battle-vozha",
+    "name": {
+      "en": "Battle of the Vozha River (1378)",
+      "kz": "Вожа өзені шайқасы (1378)",
+      "ru": "Битва на реке Воже (1378)"
+    },
+    "type": "battle",
+    "lat": 54.4,
+    "lng": 40.2,
+    "founded": 1378,
+    "destroyed": 1378,
+    "sides": {
+      "attacker": "Golden Horde (sent by Mamai)",
+      "defender": "Grand Duchy of Moscow (Dmitry Donskoi)"
+    },
+    "story": "A Muscovite army under Dmitry Donskoi defeated a Golden Horde force sent by the warlord Mamai - the first clear Russian battlefield victory over the Horde. It was a rehearsal, both militarily and psychologically, for the far larger clash at Kulikovo two years later.",
+    "fun_fact": "Mamai never held the title of khan himself - as a non-Chinggisid, he ruled by installing puppet khans, which is part of why Muscovite chroniclers treated defeating him as fair game.",
+    "image": "/images/sites/battle-vozha.jpg",
+    "quiz": {
+      "question": "What made the Battle of the Vozha River significant for Moscow?",
+      "options": [
+        "It was Moscow's first clear military victory over the Golden Horde",
+        "It ended Mongol overlordship for good",
+        "It was fought entirely by mercenaries",
+        "It led to Moscow's destruction"
+      ],
+      "answer": 0
+    }
+  },
+  {
+    "id": "battle-kulikovo",
+    "name": {
+      "en": "Battle of Kulikovo (1380)",
+      "kz": "Куликово шайқасы (1380)",
+      "ru": "Куликовская битва (1380)"
+    },
+    "type": "battle",
+    "lat": 53.67,
+    "lng": 38.67,
+    "founded": 1380,
+    "destroyed": 1380,
+    "sides": {
+      "attacker": "Golden Horde (Mamai)",
+      "defender": "Coalition of Rus' principalities (Dmitry Donskoi)"
+    },
+    "story": "Dmitry Donskoi's coalition of Rus' principalities defeated Mamai's Golden Horde army at Kulikovo Field - a landmark moral and symbolic victory that Russian tradition still remembers as a turning point. It did not, however, end Mongol overlordship outright: two years later Khan Tokhtamysh reasserted control and sacked Moscow in 1382.",
+    "fun_fact": "Despite its legendary status, Kulikovo didn't free Russia from tribute - that would take another century, until 1480.",
+    "image": "/images/sites/battle-kulikovo.jpg",
+    "quiz": {
+      "question": "What happened two years after the celebrated Russian victory at Kulikovo?",
+      "options": [
+        "Russia gained full independence from the Horde",
+        "Khan Tokhtamysh reasserted control and sacked Moscow",
+        "The Golden Horde collapsed entirely",
+        "Lithuania annexed Moscow"
+      ],
+      "answer": 1
+    }
+  },
+  {
+    "id": "battle-kondurcha",
+    "name": {
+      "en": "Battle of the Kondurcha River (1391)",
+      "kz": "Кондурша өзені шайқасы (1391)",
+      "ru": "Битва на реке Кондурче (1391)"
+    },
+    "type": "battle",
+    "lat": 53.7,
+    "lng": 50,
+    "founded": 1391,
+    "destroyed": 1391,
+    "sides": {
+      "attacker": "Timurid Empire (Timur)",
+      "defender": "Golden Horde (Tokhtamysh)"
+    },
+    "story": "Timur crushed Khan Tokhtamysh's army in one of the largest battles of the medieval world, fought on the steppe near the Kondurcha river. It was the first of two decisive defeats Timur would inflict on Tokhtamysh, and it broke the Golden Horde's military strength in a way it never fully recovered from.",
+    "fun_fact": "Contemporary chronicles describe both armies as immense even by the standards of the era - among the largest fielded anywhere in the medieval world.",
+    "image": "/images/sites/battle-kondurcha.jpg",
+    "quiz": {
+      "question": "Who defeated Tokhtamysh at the Kondurcha River in 1391?",
+      "options": [
+        "Dmitry Donskoi",
+        "Timur (Tamerlane)",
+        "Mamai",
+        "Grand Duke Algirdas"
+      ],
+      "answer": 1
+    }
+  },
+  {
+    "id": "battle-terek",
+    "name": {
+      "en": "Battle of the Terek River (1395)",
+      "kz": "Терек өзені шайқасы (1395)",
+      "ru": "Битва на реке Тереке (1395)"
+    },
+    "type": "battle",
+    "lat": 43.5,
+    "lng": 45,
+    "founded": 1395,
+    "destroyed": 1395,
+    "sides": {
+      "attacker": "Timurid Empire (Timur)",
+      "defender": "Golden Horde (Tokhtamysh)"
+    },
+    "story": "Timur decisively defeated Tokhtamysh a second time on the Terek river, using feigned retreats and concentrated archery to shatter the Horde's ranks. In the aftermath, Timur's armies swept through the Horde's core territory, razing Ukek, Hajji Tarkhan, Azaq, and finally Sarai itself - a systematic campaign of destruction that broke the Golden Horde's economic backbone for good.",
+    "fun_fact": "Timur reportedly spared Muslim inhabitants during the sack of Azaq while showing no such mercy to others - a reminder that these campaigns were framed partly in religious terms.",
+    "image": "/images/sites/battle-terek.jpg",
+    "quiz": {
+      "question": "What followed Timur's victory at the Terek River in 1395?",
+      "options": [
+        "Tokhtamysh reclaimed the throne",
+        "Timur systematically destroyed the Horde's core cities, including Sarai",
+        "The Golden Horde and Timurid Empire signed a lasting peace",
+        "Moscow declared full independence"
       ],
       "answer": 1
     }

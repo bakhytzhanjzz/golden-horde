@@ -10,6 +10,10 @@ import InfoPanel from "@/components/InfoPanel/InfoPanel";
 import TimelineSlider from "@/components/Timeline/TimelineSlider";
 import ModeToggle, { type MapMode } from "@/components/Controls/ModeToggle";
 import RouteLegend from "@/components/Controls/RouteLegend";
+import MarkerLegend from "@/components/Controls/MarkerLegend";
+
+// ChatBot uses browser APIs, so it must not render on the server.
+const ChatBot = dynamic(() => import("@/components/Chat/ChatBot"), { ssr: false });
 
 // Leaflet touches `window`, so the map must not render on the server.
 const MapView = dynamic(() => import("@/components/Map/MapView"), {
@@ -86,6 +90,13 @@ export default function Home() {
       {/* Vignette for depth — sits above tiles, below the UI, ignores clicks */}
       <div className="pointer-events-none absolute inset-0 z-[400] shadow-[inset_0_0_160px_rgba(60,40,15,0.38)]" />
 
+      {/* Marker legend, bottom-left (only in sites mode) */}
+      {mode === "sites" && (
+        <div className="absolute bottom-5 left-4 z-[500]">
+          <MarkerLegend />
+        </div>
+      )}
+
       {/* Route legend, bottom-left (only when routes are shown) */}
       {mode === "routes" && (
         <div className="absolute bottom-5 left-4 z-[500]">
@@ -99,6 +110,9 @@ export default function Home() {
       </div>
 
       <InfoPanel selection={selection} onClose={() => setSelectedId(null)} />
+
+      {/* AI Historian chatbot — floating button + sidebar */}
+      <ChatBot />
     </main>
   );
 }
