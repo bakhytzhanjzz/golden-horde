@@ -11,6 +11,7 @@ import TimelineSlider from "@/components/Timeline/TimelineSlider";
 import ModeToggle, { type MapMode } from "@/components/Controls/ModeToggle";
 import RouteLegend from "@/components/Controls/RouteLegend";
 import MarkerLegend from "@/components/Controls/MarkerLegend";
+import ScoreBadge from "@/components/Controls/ScoreBadge";
 
 // ChatBot uses browser APIs, so it must not render on the server.
 const ChatBot = dynamic(() => import("@/components/Chat/ChatBot"), { ssr: false });
@@ -26,6 +27,8 @@ const MapView = dynamic(() => import("@/components/Map/MapView"), {
 });
 
 const sites = sitesData as Site[];
+const siteById = new Map(sites.map((s) => [s.id, s]));
+const TOTAL_QUIZZES = sites.filter((s) => s.quiz).length;
 
 /** A city is visible if it exists at `year`: founded ≤ year ≤ (destroyed || fall). */
 function isVisibleAt(site: Site, year: number): boolean {
@@ -37,6 +40,9 @@ export default function Home() {
   const [year, setYear] = useState(1357); // open near the empire's peak
   const [mode, setMode] = useState<MapMode>("sites");
   const [selectedId, setSelectedId] = useState<string | null>(null);
+  // Quiz answers: siteId → chosen option index. First answer per site is final,
+  // so points can't be farmed by re-answering.
+  const [quizAnswers, setQuizAnswers] = useState<Record<string, number>>({});
 
   const visibleSites = useMemo(
     () => sites.filter((s) => isVisibleAt(s, year)),
@@ -61,6 +67,28 @@ export default function Home() {
     return null;
   }, [selectedId, mode, visibleSites, visibleRoutes]);
 
+  // Running quiz score: +1 for each site whose recorded answer is correct.
+  const { score, answeredCount } = useMemo(() => {
+    let s = 0;
+    for (const [id, idx] of Object.entries(quizAnswers)) {
+      const site = siteById.get(id);
+      if (site?.quiz && site.quiz.answer === idx) s += 1;
+    }
+    return { score: s, answeredCount: Object.keys(quizAnswers).length };
+  }, [quizAnswers]);
+
+  function handleQuizAnswer(siteId: string, index: number) {
+    // Lock the first answer per site.
+    setQuizAnswers((prev) =>
+      prev[siteId] !== undefined ? prev : { ...prev, [siteId]: index }
+    );
+  }
+
+  const quizAnsweredIndex =
+    selection && !("route_type" in selection)
+      ? quizAnswers[selection.id]
+      : undefined;
+
   return (
     <main className="relative h-screen w-screen overflow-hidden">
       {/* Title overlay */}
@@ -78,6 +106,15 @@ export default function Home() {
         <ModeToggle mode={mode} onChange={setMode} />
       </div>
 
+      {/* Quiz score, top-right */}
+      <div className="absolute right-4 top-4 z-[500]">
+        <ScoreBadge
+          score={score}
+          answered={answeredCount}
+          total={TOTAL_QUIZZES}
+        />
+      </div>
+
       <MapView
         mode={mode}
         sites={visibleSites}
@@ -87,8 +124,9 @@ export default function Home() {
         onSelect={setSelectedId}
       />
 
-      {/* Vignette for depth — sits above tiles, below the UI, ignores clicks */}
-      <div className="pointer-events-none absolute inset-0 z-[400] shadow-[inset_0_0_160px_rgba(60,40,15,0.38)]" />
+      {/* Vignette for depth — sits above tiles, below the UI, ignores clicks.
+          Kept subtle so it darkens only the corners, not the readable center. */}
+      <div className="pointer-events-none absolute inset-0 z-[400] shadow-[inset_0_0_120px_rgba(60,40,15,0.2)]" />
 
       {/* Marker legend, bottom-left (only in sites mode) */}
       {mode === "sites" && (
@@ -109,7 +147,12 @@ export default function Home() {
         <TimelineSlider year={year} onChange={setYear} />
       </div>
 
-      <InfoPanel selection={selection} onClose={() => setSelectedId(null)} />
+      <InfoPanel
+        selection={selection}
+        onClose={() => setSelectedId(null)}
+        quizAnsweredIndex={quizAnsweredIndex}
+        onQuizAnswer={handleQuizAnswer}
+      />
 
       {/* AI Historian chatbot — floating button + sidebar */}
       <ChatBot />

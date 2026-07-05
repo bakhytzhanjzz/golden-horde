@@ -58,4 +58,9 @@ export type Site = {
   fun_fact?: string;
   image?: string;
   quiz?: Quiz;
+  /** For battle sites: who fought whom (drives the attacker/defender breakdown). */
+  sides?: {
+    attacker: string;
+    defender: string;
+  };
 };

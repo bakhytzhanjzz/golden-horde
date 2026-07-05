@@ -30,8 +30,7 @@ body {
    A warm sepia filter over the tiles turns a plain modern basemap into
    something that reads as an old map, without needing custom tiles. */
 .leaflet-tile {
-  filter: sepia(0.55) saturate(0.75) brightness(1.03) contrast(0.92)
-    hue-rotate(-8deg);
+  filter: sepia(0.28) saturate(0.92) brightness(1.02) contrast(1) hue-rotate(-6deg);
 }
 
 /* Keep Leaflet's own controls/labels crisp (undo the tile filter feel) */

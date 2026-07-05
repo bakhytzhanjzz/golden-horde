@@ -12,8 +12,10 @@ type BorderLayerProps = {
   color?: string;
 };
 
-const MAX_FILL_OPACITY = 0.35;
-const MAX_STROKE_OPACITY = 0.9;
+// Keep the fill light so city labels on the basemap stay readable through it;
+// the stroke stays strong so the territory outline is still clearly defined.
+const MAX_FILL_OPACITY = 0.14;
+const MAX_STROKE_OPACITY = 0.95;
 
 /**
  * A single border snapshot. Stays mounted at all times and only animates its
@@ -34,7 +36,7 @@ export default function BorderLayer({
     layer.setStyle({
       color,
       fillColor: color,
-      weight: 2,
+      weight: 2.5,
       opacity: weight * MAX_STROKE_OPACITY,
       fillOpacity: weight * MAX_FILL_OPACITY,
     });
