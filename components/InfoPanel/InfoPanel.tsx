@@ -4,6 +4,16 @@ import { useState } from "react";
 import type { Route, Site, SiteType } from "@/lib/types";
 import { ROUTE_STYLES } from "@/lib/routes";
 import { siteTypeMeta } from "@/lib/siteMeta";
+import { useLang, useStrings } from "@/lib/i18n";
+import {
+  locName,
+  locRouteFunFact,
+  locRouteStory,
+  locSiteFunFact,
+  locSiteQuiz,
+  locSiteSides,
+  locSiteStory,
+} from "@/lib/localize";
 import Quiz from "./Quiz";
 
 type Selection = Site | Route;
@@ -11,7 +21,6 @@ type Selection = Site | Route;
 type InfoPanelProps = {
   selection: Selection | null;
   onClose: () => void;
-  /** For the selected site: the option index the user already picked (if any). */
   quizAnsweredIndex?: number;
   onQuizAnswer: (siteId: string, index: number) => void;
 };
@@ -28,19 +37,14 @@ function isRoute(sel: Selection): sel is Route {
   return "route_type" in sel;
 }
 
-/**
- * Header banner. Shows the site photo if it loads; otherwise falls back to a
- * tasteful type-colored gradient with the emblem, so a missing image never
- * leaves a broken-image icon or an empty box.
- */
 function SiteBanner({ site }: { site: Site }) {
   const [loaded, setLoaded] = useState(false);
   const [failed, setFailed] = useState(false);
+  const t = useStrings();
   const meta = siteTypeMeta(site.type);
 
   return (
     <div className="relative h-44 w-full shrink-0 overflow-hidden bg-[#e7dcc0]">
-      {/* Fallback gradient + emblem, always underneath the image */}
       <div
         className="absolute inset-0 flex flex-col items-center justify-center gap-1"
         style={{
@@ -52,14 +56,14 @@ function SiteBanner({ site }: { site: Site }) {
           className="text-[11px] font-semibold uppercase tracking-[0.2em]"
           style={{ color: meta.color }}
         >
-          {meta.label}
+          {t.siteType[site.type]}
         </span>
       </div>
 
       {site.image && !failed && (
         <img
           src={site.image}
-          alt={site.name.en}
+          alt=""
           onLoad={() => setLoaded(true)}
           onError={() => setFailed(true)}
           className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-300 ${
@@ -68,26 +72,28 @@ function SiteBanner({ site }: { site: Site }) {
         />
       )}
 
-      {/* Bottom fade so the header text below sits cleanly */}
       <div className="absolute inset-x-0 bottom-0 h-10 bg-gradient-to-t from-[#efe6cf] to-transparent" />
     </div>
   );
 }
 
 function BattleSides({ site }: { site: Site }) {
-  if (!site.sides) return null;
+  const t = useStrings();
+  const { lang } = useLang();
+  const sides = locSiteSides(site, lang);
+  if (!sides) return null;
   return (
     <section>
       <h3 className="mb-2 text-xs font-semibold uppercase tracking-wider text-[#9a8860]">
-        Who fought
+        {t.whoFought}
       </h3>
       <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-2">
         <div className="rounded-lg border border-[#d8cba8] bg-[#f4ecd8] p-3">
           <div className="text-[10px] font-semibold uppercase tracking-wider text-[#b8391f]">
-            Attacker
+            {t.attacker}
           </div>
           <div className="mt-1 text-sm font-medium text-[#3a2f1b]">
-            {site.sides.attacker}
+            {sides.attacker}
           </div>
         </div>
         <div className="text-xl" aria-hidden>
@@ -95,10 +101,10 @@ function BattleSides({ site }: { site: Site }) {
         </div>
         <div className="rounded-lg border border-[#d8cba8] bg-[#f4ecd8] p-3">
           <div className="text-[10px] font-semibold uppercase tracking-wider text-[#2c7a7b]">
-            Defender
+            {t.defender}
           </div>
           <div className="mt-1 text-sm font-medium text-[#3a2f1b]">
-            {site.sides.defender}
+            {sides.defender}
           </div>
         </div>
       </div>
@@ -112,13 +118,34 @@ export default function InfoPanel({
   quizAnsweredIndex,
   onQuizAnswer,
 }: InfoPanelProps) {
+  const t = useStrings();
+  const { lang } = useLang();
   const open = selection !== null;
   const site = selection && !isRoute(selection) ? selection : null;
   const route = selection && isRoute(selection) ? selection : null;
 
+  const displayName = selection ? locName(selection.name, lang) : "";
+  const altNames = selection
+    ? [selection.name.en, selection.name.kz, selection.name.ru].filter(
+        (n): n is string => !!n && n !== displayName
+      )
+    : [];
+
+  const storyText = site
+    ? locSiteStory(site, lang)
+    : route
+    ? locRouteStory(route, lang)
+    : "";
+  const funFactText = site
+    ? locSiteFunFact(site, lang)
+    : route
+    ? locRouteFunFact(route, lang)
+    : undefined;
+  const quiz = site ? locSiteQuiz(site, lang) : undefined;
+
   return (
     <>
-      {/* Backdrop (mobile-friendly; click to close) */}
+      {/* Backdrop */}
       <div
         aria-hidden={!open}
         onClick={onClose}
@@ -138,28 +165,24 @@ export default function InfoPanel({
       >
         {selection && (
           <>
-            {/* Photo banner (sites only) */}
             {site && <SiteBanner site={site} />}
 
             <header className="sticky top-0 z-10 flex shrink-0 items-start justify-between gap-4 border-b border-[#d8cba8] bg-[#efe6cf] px-6 py-5">
               <div>
                 <h2 className="text-2xl font-bold text-[#3a2f1b]">
-                  {selection.name.en}
+                  {displayName}
                 </h2>
-                {(selection.name.kz || selection.name.ru) && (
+                {altNames.length > 0 && (
                   <p className="mt-1 text-sm text-[#7a6a48]">
-                    {[selection.name.kz, selection.name.ru]
-                      .filter(Boolean)
-                      .join(" · ")}
+                    {altNames.join(" · ")}
                   </p>
                 )}
-                {/* Type / route badge */}
                 {site && (
                   <span
                     className="mt-2 inline-block rounded-full px-2.5 py-0.5 text-xs font-semibold text-white"
                     style={{ backgroundColor: siteTypeMeta(site.type).color }}
                   >
-                    {siteTypeMeta(site.type).label}
+                    {t.siteType[site.type]}
                   </span>
                 )}
                 {route && (
@@ -169,7 +192,7 @@ export default function InfoPanel({
                       backgroundColor: ROUTE_STYLES[route.route_type].color,
                     }}
                   >
-                    {ROUTE_STYLES[route.route_type].label} route
+                    {t.routeType[route.route_type]} {t.routeSuffix}
                   </span>
                 )}
               </div>
@@ -186,18 +209,18 @@ export default function InfoPanel({
               {/* Key dates / active period */}
               <section>
                 <h3 className="mb-2 text-xs font-semibold uppercase tracking-wider text-[#9a8860]">
-                  {route ? "Active period" : "Key dates"}
+                  {route ? t.activePeriod : t.keyDates}
                 </h3>
                 {route ? (
                   <dl className="grid grid-cols-2 gap-x-4 gap-y-2 text-sm">
                     <div>
-                      <dt className="text-[#9a8860]">Active from</dt>
+                      <dt className="text-[#9a8860]">{t.activeFrom}</dt>
                       <dd className="font-semibold text-[#3a2f1b]">
                         {route.active_from}
                       </dd>
                     </div>
                     <div>
-                      <dt className="text-[#9a8860]">Active until</dt>
+                      <dt className="text-[#9a8860]">{t.activeUntil}</dt>
                       <dd className="font-semibold text-[#3a2f1b]">
                         {route.active_to}
                       </dd>
@@ -208,7 +231,7 @@ export default function InfoPanel({
                     <dl className="grid grid-cols-2 gap-x-4 gap-y-2 text-sm">
                       <div>
                         <dt className="text-[#9a8860]">
-                          {site.type === "battle" ? "Fought" : "Founded"}
+                          {site.type === "battle" ? t.fought : t.founded}
                         </dt>
                         <dd className="font-semibold text-[#3a2f1b]">
                           {site.founded}
@@ -216,9 +239,7 @@ export default function InfoPanel({
                       </div>
                       {site.type !== "battle" && (
                         <div>
-                          <dt className="text-[#9a8860]">
-                            Destroyed / abandoned
-                          </dt>
+                          <dt className="text-[#9a8860]">{t.destroyed}</dt>
                           <dd className="font-semibold text-[#3a2f1b]">
                             {site.destroyed ?? "—"}
                           </dd>
@@ -226,7 +247,7 @@ export default function InfoPanel({
                       )}
                       {site.peak_period && (
                         <div className="col-span-2">
-                          <dt className="text-[#9a8860]">Peak period</dt>
+                          <dt className="text-[#9a8860]">{t.peakPeriod}</dt>
                           <dd className="font-semibold text-[#3a2f1b]">
                             {site.peak_period[0]} – {site.peak_period[1]}
                           </dd>
@@ -243,29 +264,29 @@ export default function InfoPanel({
               {/* Story */}
               <section>
                 <h3 className="mb-2 text-xs font-semibold uppercase tracking-wider text-[#9a8860]">
-                  Story
+                  {t.story}
                 </h3>
                 <p className="text-[15px] leading-relaxed text-[#4a3f28]">
-                  {selection.story}
+                  {storyText}
                 </p>
               </section>
 
               {/* Fun fact */}
-              {selection.fun_fact && (
+              {funFactText && (
                 <section className="rounded-lg border border-[#d8cba8] bg-[#efe6cf] p-4">
                   <h3 className="mb-1 text-xs font-semibold uppercase tracking-wider text-[#9a8860]">
-                    Did you know?
+                    {t.didYouKnow}
                   </h3>
                   <p className="text-[15px] leading-relaxed text-[#4a3f28]">
-                    {selection.fun_fact}
+                    {funFactText}
                   </p>
                 </section>
               )}
 
-              {/* Micro-quiz (sites with a quiz) */}
-              {site && site.quiz && (
+              {/* Micro-quiz */}
+              {site && quiz && (
                 <Quiz
-                  quiz={site.quiz}
+                  quiz={quiz}
                   answeredIndex={quizAnsweredIndex}
                   onAnswer={(i) => onQuizAnswer(site.id, i)}
                 />

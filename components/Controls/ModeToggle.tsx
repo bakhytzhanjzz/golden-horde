@@ -1,5 +1,7 @@
 "use client";
 
+import { useStrings } from "@/lib/i18n";
+
 export type MapMode = "sites" | "routes";
 
 type ModeToggleProps = {
@@ -7,12 +9,12 @@ type ModeToggleProps = {
   onChange: (mode: MapMode) => void;
 };
 
-const OPTIONS: { value: MapMode; label: string }[] = [
-  { value: "sites", label: "Sites" },
-  { value: "routes", label: "Routes" },
-];
-
 export default function ModeToggle({ mode, onChange }: ModeToggleProps) {
+  const t = useStrings();
+  const OPTIONS: { value: MapMode; label: string }[] = [
+    { value: "sites", label: t.sites },
+    { value: "routes", label: t.routes },
+  ];
   return (
     <div
       role="tablist"

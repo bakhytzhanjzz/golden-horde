@@ -42,6 +42,12 @@ body {
   color: #8a5a2b !important;
 }
 
+/* Push the top-left zoom control down so it sits below the title + Browse
+   stack (which occupy the top-left corner) instead of hiding behind it. */
+.leaflet-top.leaflet-left {
+  top: 132px;
+}
+
 /* --- City tooltips ---------------------------------------------------------- */
 .gh-city-tooltip {
   background: #3a2f1b !important;

@@ -1,6 +1,7 @@
 "use client";
 
 import type { Quiz as QuizData } from "@/lib/types";
+import { useStrings } from "@/lib/i18n";
 
 type QuizProps = {
   quiz: QuizData;
@@ -10,6 +11,7 @@ type QuizProps = {
 };
 
 export default function Quiz({ quiz, answeredIndex, onAnswer }: QuizProps) {
+  const t = useStrings();
   const answered = answeredIndex !== undefined;
   const correct = answered && answeredIndex === quiz.answer;
 
@@ -18,7 +20,7 @@ export default function Quiz({ quiz, answeredIndex, onAnswer }: QuizProps) {
       <div className="mb-3 flex items-center gap-2">
         <span className="text-base">🎯</span>
         <h3 className="text-xs font-semibold uppercase tracking-wider text-[#9a8860]">
-          Quick quiz
+          {t.quickQuiz}
         </h3>
       </div>
 
@@ -73,10 +75,8 @@ export default function Quiz({ quiz, answeredIndex, onAnswer }: QuizProps) {
           }`}
         >
           {correct
-            ? "Correct! +1 point"
-            : `Not quite — the answer is ${String.fromCharCode(
-                65 + quiz.answer
-              )}.`}
+            ? t.correct
+            : `${t.notQuitePrefix} ${String.fromCharCode(65 + quiz.answer)}.`}
         </p>
       )}
     </section>

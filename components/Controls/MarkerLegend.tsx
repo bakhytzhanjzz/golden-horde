@@ -1,22 +1,26 @@
 "use client";
 
-const ENTRIES = [
-  { icon: "🏰", label: "City", color: "#8a5a2b" },
-  { icon: "👑", label: "Capital", color: "#6b4c0a" },
-  { icon: "⚔️", label: "Battle site", color: "#8b1a1a" },
-  { icon: "☽", label: "Sacred site", color: "#2a5e6e" },
-  { icon: "⚓", label: "Port / trading post", color: "#1a4a6b" },
+import { useStrings } from "@/lib/i18n";
+import type { SiteType } from "@/lib/types";
+
+const ENTRIES: { icon: string; type: SiteType; color: string }[] = [
+  { icon: "🏰", type: "city", color: "#8a5a2b" },
+  { icon: "👑", type: "capital", color: "#6b4c0a" },
+  { icon: "⚔️", type: "battle", color: "#8b1a1a" },
+  { icon: "☽", type: "sacred", color: "#2a5e6e" },
+  { icon: "⚓", type: "port", color: "#1a4a6b" },
 ];
 
 export default function MarkerLegend() {
+  const t = useStrings();
   return (
     <div className="pointer-events-auto rounded-xl border border-[#d8cba8] bg-[#f4ecd8]/95 px-4 py-3 shadow-lg backdrop-blur-sm">
       <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-[#9a8860]">
-        Sites
+        {t.sites}
       </p>
       <ul className="space-y-1.5">
-        {ENTRIES.map(({ icon, label, color }) => (
-          <li key={label} className="flex items-center gap-2.5 text-sm">
+        {ENTRIES.map(({ icon, type, color }) => (
+          <li key={type} className="flex items-center gap-2.5 text-sm">
             <span
               className="flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full text-[11px]"
               style={{
@@ -27,7 +31,7 @@ export default function MarkerLegend() {
             >
               {icon}
             </span>
-            <span className="text-[#4a3f28]">{label}</span>
+            <span className="text-[#4a3f28]">{t.siteType[type]}</span>
           </li>
         ))}
       </ul>

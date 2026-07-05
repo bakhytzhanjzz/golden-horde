@@ -1,16 +1,19 @@
 "use client";
 
 import { BORDER_SNAPSHOTS, YEAR_MAX, YEAR_MIN } from "@/lib/borders";
+import { useStrings } from "@/lib/i18n";
 
 type TimelineSliderProps = {
   year: number;
   onChange: (year: number) => void;
 };
 
-// Key historical moments to mark on the track (founding → fall).
-const TICKS = [1206, 1240, 1266, 1313, 1357, 1395, 1420, 1460, 1502];
+// Tick marks align with the border snapshots, so every labelled year is a
+// moment the map's territory actually changes.
+const TICKS = BORDER_SNAPSHOTS.map((s) => s.year);
 
 export default function TimelineSlider({ year, onChange }: TimelineSliderProps) {
+  const t = useStrings();
   const pct = ((year - YEAR_MIN) / (YEAR_MAX - YEAR_MIN)) * 100;
   const snapshotYears = new Set(BORDER_SNAPSHOTS.map((s) => s.year));
 
@@ -18,7 +21,7 @@ export default function TimelineSlider({ year, onChange }: TimelineSliderProps) 
     <div className="pointer-events-auto w-full rounded-xl border border-[#d8cba8] bg-[#f4ecd8]/95 px-5 py-4 shadow-lg backdrop-blur-sm">
       <div className="mb-2 flex items-baseline justify-between">
         <span className="text-xs font-semibold uppercase tracking-wider text-[#9a8860]">
-          Timeline
+          {t.timeline}
         </span>
         <span className="text-2xl font-bold tabular-nums text-[#3a2f1b]">
           {year}
@@ -55,25 +58,21 @@ export default function TimelineSlider({ year, onChange }: TimelineSliderProps) 
 
       {/* Tick labels */}
       <div className="relative mt-1 h-4">
-        {TICKS.map((t) => {
-          const left = ((t - YEAR_MIN) / (YEAR_MAX - YEAR_MIN)) * 100;
-          const isSnapshot = snapshotYears.has(t);
+        {TICKS.map((yr) => {
+          const left = ((yr - YEAR_MIN) / (YEAR_MAX - YEAR_MIN)) * 100;
+          const isSnapshot = snapshotYears.has(yr);
           return (
             <button
-              key={t}
+              key={yr}
               type="button"
-              onClick={() => onChange(t)}
-              title={
-                isSnapshot ? `${t} — border snapshot` : `Jump to ${t}`
-              }
+              onClick={() => onChange(yr)}
+              title={String(yr)}
               style={{ left: `${left}%` }}
               className={`absolute -translate-x-1/2 text-[10px] tabular-nums transition-colors hover:text-[#b8391f] ${
-                isSnapshot
-                  ? "font-bold text-[#8a5a2b]"
-                  : "text-[#9a8860]"
+                isSnapshot ? "font-bold text-[#8a5a2b]" : "text-[#9a8860]"
               }`}
             >
-              {t}
+              {yr}
             </button>
           );
         })}

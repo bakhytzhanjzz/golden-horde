@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import Providers from "./providers";
 
 export const metadata: Metadata = {
   title: "Алтын Орда, Уақыт Саяхаты — Golden Horde: A Journey Through Time",
@@ -13,8 +14,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body>{children}</body>
+    <html lang="kk">
+      <body>
+        <Providers>{children}</Providers>
+      </body>
     </html>
   );
 }

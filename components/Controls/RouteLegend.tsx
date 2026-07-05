@@ -2,14 +2,16 @@
 
 import { ROUTE_STYLES } from "@/lib/routes";
 import type { RouteType } from "@/lib/types";
+import { useStrings } from "@/lib/i18n";
 
 const ORDER: RouteType[] = ["trade", "military", "postal"];
 
 export default function RouteLegend() {
+  const t = useStrings();
   return (
     <div className="pointer-events-auto rounded-xl border border-[#d8cba8] bg-[#f4ecd8]/95 px-4 py-3 shadow-lg backdrop-blur-sm">
       <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-[#9a8860]">
-        Routes
+        {t.routes}
       </p>
       <ul className="space-y-1.5">
         {ORDER.map((type) => {
@@ -23,7 +25,7 @@ export default function RouteLegend() {
                   boxShadow: `0 0 6px ${s.glow}`,
                 }}
               />
-              <span className="text-[#4a3f28]">{s.label}</span>
+              <span className="text-[#4a3f28]">{t.routeType[type]}</span>
             </li>
           );
         })}

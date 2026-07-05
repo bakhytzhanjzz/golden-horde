@@ -17,7 +17,7 @@
     ],
     "story": "A great Silk Road oasis city at the meeting point of the Arys and Syr Darya rivers, and the birthplace of the philosopher al-Farabi. In 1218 its governor Inalchuq seized and executed a trade caravan sent by Genghis Khan, accusing its merchants of spying. Genghis Khan's demand for justice was answered with an insult, and in retaliation the Mongols laid siege to Otrar for five months in 1219-1220. When the city finally fell, Inalchuq was executed and much of the population was killed - the event historians call the spark of the entire Mongol invasion of Central Asia.",
     "fun_fact": "The Mongol conqueror Timur (Tamerlane) died in Otrar in January 1405, just as he was setting out on a planned campaign against Ming China.",
-    "image": "/images/sites/otrar.jpg",
+    "image": "/images/sites/otyrar.jpg",
     "quiz": {
       "question": "What event triggered the Mongol invasion that destroyed Otrar in 1219?",
       "options": [
@@ -47,7 +47,7 @@
     ],
     "story": "Known to medieval chroniclers as 'the oasis of the Kipchak steppes,' Sygnak sat on the lower Syr Darya and grew rich from Silk Road trade long before the Mongols arrived. Jochi Khan's army besieged and captured it in 1219 after the city resisted for seven days. Rebuilt under Mongol rule, Sygnak rose again to become the 14th-century capital of the White Horde (Ak Orda), the eastern wing of the Golden Horde, minting its own coins and hosting the courts of khans such as Urus Khan.",
     "fun_fact": "Sygnak later became closely tied to the founding of the Kazakh Khanate - the ruler Abu'l-Khayr Khan is said to be buried there.",
-    "image": "/images/sites/sygnak.jpg",
+    "image": "/images/sites/syganak.jpg",
     "quiz": {
       "question": "Sygnak served as the 14th-century capital of which khanate?",
       "options": [
@@ -107,7 +107,7 @@
     ],
     "story": "Founded in the early decades of the Golden Horde on the Ural (Zhaiyk) river, Saraishyk grew into a major administrative and trade hub linking the Volga capitals to Khwarazm, Iran, India, and China. The Arab traveler Ibn Battuta stayed here in 1334 and described river ferries that reminded him of Baghdad. The city hosted the courts and mausoleums of several khans, and later became the capital of the Nogai Horde, before being destroyed by Cossack raids in 1580.",
     "fun_fact": "Excavations at Saraishyk have revealed a pressurized ceramic water-pipe system and sewage network - remarkably advanced urban infrastructure for its time.",
-    "image": "/images/sites/saraishyk.jpg",
+    "image": "/images/sites/sarayshyq.jpg",
     "quiz": {
       "question": "Which famous traveler stayed in Saraishyk in 1334 and compared its river ferries to Baghdad?",
       "options": [
@@ -137,7 +137,7 @@
     ],
     "story": "The Golden Horde's capital on the lower Volga, first built by Batu Khan and mentioned by the traveler William of Rubruck in 1253-54. Under Khan Ozbeg a new capital, New Sarai, rose nearby and became one of the largest cities of the medieval world. Ibn Battuta, visiting in 1333, described a beautiful city of wide streets where six different peoples - Mongols, Alans, Kipchaks, Circassians, Russians, and Greeks - each held their own quarter. Timur burned Sarai to the ground in the winter of 1395-96; the city partially recovered, but a final sack by the Crimean khan in June 1502 marked the symbolic end of the Golden Horde itself.",
     "fun_fact": "Poets lived and worked in Sarai's court, and archaeologists have even found an astrolabe there - evidence of the city's scientific and cultural life, not just its political power.",
-    "image": "/images/sites/sarai.jpg",
+    "image": "/images/sites/saray-batu.jpg",
     "quiz": {
       "question": "What happened to Sarai in 1502?",
       "options": [
@@ -227,7 +227,7 @@
     ],
     "story": "The administrative and political center of the Golden Horde's Crimean ulus. In 1314, Khan Ozbeg built a grand mosque here as part of his push to make Islam the state religion of the empire - a turning point in the Horde's cultural and religious identity. Solkhat sat close to the Genoese trading colony of Caffa, plugging Crimea directly into Mediterranean commerce.",
     "fun_fact": "The 1314 mosque built by Ozbeg Khan still stands today in the modern town of Stary Krym (Old Crimea).",
-    "image": "/images/sites/solkhat.jpg",
+    "image": "/images/sites/solhat.jpg",
     "quiz": {
       "question": "What major religious change did Khan Ozbeg mark by building a mosque in Solkhat in 1314?",
       "options": [
@@ -257,7 +257,7 @@
     ],
     "story": "A major city in the Volga delta, listed by Ibn Battuta among the seven great cities of Khan Ozbeg's realm alongside Sarai, Solkhat, and Azaq. Timur's armies razed it in 1395 during the systematic destruction of Golden Horde cities that followed his defeat of Tokhtamysh. Its name lives on in the modern Russian city that eventually rose nearby.",
     "fun_fact": "The modern city of Astrakhan grew up in this same delta region after the Golden Horde's fall, carrying on Hajji Tarkhan's role as a river gateway.",
-    "image": "/images/sites/hajji-tarkhan.jpg",
+    "image": "/images/sites/haji-tarkhan.jpeg",
     "quiz": {
       "question": "What eventually arose in the same region as Hajji Tarkhan after the Golden Horde's collapse?",
       "options": [
@@ -347,7 +347,7 @@
     ],
     "story": "Home to the Sufi teacher Khoja Ahmed Yasawi, whose 12th-century teachings shaped Turkic Islam across Central Asia. In 1389, Timur ordered the construction of a monumental mausoleum over Yasawi's grave as a show of piety and imperial power. The unfinished but still-towering structure turned Yasi, later renamed Turkestan, into one of the region's most important pilgrimage sites - a spiritual counterweight to the Horde's political capitals on the Volga.",
     "fun_fact": "The Yasawi mausoleum's architecture is often cited by historians as an early example of the Timurid style that would later influence the Taj Mahal.",
-    "image": "/images/sites/yasi-turkestan.jpg",
+    "image": "/images/sites/turkistan.jpg",
     "quiz": {
       "question": "Who ordered the construction of the great mausoleum at Yasi in 1389?",
       "options": [
@@ -407,7 +407,7 @@
     ],
     "story": "An old Islamic city on the lower Syr Darya, mentioned in Arab geographies long before the Mongols arrived. Jand was among the first Syr Darya cities to fall to Jochi's forces in the 1219-1220 campaign, alongside Otrar and Sygnak, as the Mongols moved to secure the river corridor before pushing further into Khwarazm.",
     "fun_fact": "Jand's fall came so early in the Mongol invasion that it barely appears in most popular retellings - overshadowed by the more dramatic sieges of Otrar and Sygnak that followed.",
-    "image": "/images/sites/jand.jpg",
+    "image": "/images/sites/jent.jpg",
     "quiz": {
       "question": "What role did Jand play in the 1219-1220 Mongol campaign?",
       "options": [
@@ -467,7 +467,7 @@
     },
     "story": "Decades before the Golden Horde even existed, a Mongol reconnaissance force under Subutai and Jebe crushed a coalition of Rus' princes and their Cuman allies near the Kalka River. It was the first encounter between Mongol and Rus' forces - a preview of the far larger invasion that Batu Khan would launch fifteen years later.",
     "fun_fact": "After the battle, the victorious Mongol commanders reportedly feasted on a platform built over the bodies of captured Rus' princes.",
-    "image": "/images/sites/battle-kalka.jpg",
+    "image": "/images/sites/kalka.jpg",
     "quiz": {
       "question": "What was significant about the Battle of the Kalka River?",
       "options": [
@@ -527,7 +527,7 @@
     },
     "story": "Batu Khan and Subutai's main army defeated King Bela IV of Hungary at the Sajo river, opening the Hungarian plain to devastating raids. This marked the furthest west the Mongol invasion of Europe ever reached before the army turned back the following year on news of the Great Khan Ogedei's death.",
     "fun_fact": "The withdrawal from Europe in 1242 wasn't a retreat from defeat - it was triggered by a succession crisis thousands of kilometers away in Mongolia.",
-    "image": "/images/sites/battle-mohi.jpg",
+    "image": "/images/sites/battle-mohi.webp",
     "quiz": {
       "question": "Why did the Mongol army withdraw from Europe after Mohi, rather than pressing further west?",
       "options": [
@@ -557,7 +557,7 @@
     },
     "story": "During the Golden Horde's period of internal chaos known as the 'Great Troubles,' Grand Duke Algirdas of Lithuania pushed deep into Horde territory and defeated a Jochid force near the Blue Waters (Syniukha) river. The victory let Lithuania annex huge swaths of what is now Ukraine - a rare instance of the Horde losing territory outright rather than merely a battle.",
     "fun_fact": "This battle happened while as many as four rival khans were simultaneously claiming the Golden Horde's throne - a measure of just how fractured the empire had become.",
-    "image": "/images/sites/battle-blue-waters.jpg",
+    "image": "/images/sites/blue-water-bay.jpg",
     "quiz": {
       "question": "What let Lithuania win at Blue Waters and annex former Golden Horde land?",
       "options": [
@@ -587,7 +587,7 @@
     },
     "story": "A Muscovite army under Dmitry Donskoi defeated a Golden Horde force sent by the warlord Mamai - the first clear Russian battlefield victory over the Horde. It was a rehearsal, both militarily and psychologically, for the far larger clash at Kulikovo two years later.",
     "fun_fact": "Mamai never held the title of khan himself - as a non-Chinggisid, he ruled by installing puppet khans, which is part of why Muscovite chroniclers treated defeating him as fair game.",
-    "image": "/images/sites/battle-vozha.jpg",
+    "image": "/images/sites/vozha.jpg",
     "quiz": {
       "question": "What made the Battle of the Vozha River significant for Moscow?",
       "options": [
@@ -617,7 +617,7 @@
     },
     "story": "Dmitry Donskoi's coalition of Rus' principalities defeated Mamai's Golden Horde army at Kulikovo Field - a landmark moral and symbolic victory that Russian tradition still remembers as a turning point. It did not, however, end Mongol overlordship outright: two years later Khan Tokhtamysh reasserted control and sacked Moscow in 1382.",
     "fun_fact": "Despite its legendary status, Kulikovo didn't free Russia from tribute - that would take another century, until 1480.",
-    "image": "/images/sites/battle-kulikovo.jpg",
+    "image": "/images/sites/kulikov.jpg",
     "quiz": {
       "question": "What happened two years after the celebrated Russian victory at Kulikovo?",
       "options": [
@@ -647,7 +647,7 @@
     },
     "story": "Timur crushed Khan Tokhtamysh's army in one of the largest battles of the medieval world, fought on the steppe near the Kondurcha river. It was the first of two decisive defeats Timur would inflict on Tokhtamysh, and it broke the Golden Horde's military strength in a way it never fully recovered from.",
     "fun_fact": "Contemporary chronicles describe both armies as immense even by the standards of the era - among the largest fielded anywhere in the medieval world.",
-    "image": "/images/sites/battle-kondurcha.jpg",
+    "image": "/images/sites/kondurcha.jpg",
     "quiz": {
       "question": "Who defeated Tokhtamysh at the Kondurcha River in 1391?",
       "options": [
@@ -677,7 +677,7 @@
     },
     "story": "Timur decisively defeated Tokhtamysh a second time on the Terek river, using feigned retreats and concentrated archery to shatter the Horde's ranks. In the aftermath, Timur's armies swept through the Horde's core territory, razing Ukek, Hajji Tarkhan, Azaq, and finally Sarai itself - a systematic campaign of destruction that broke the Golden Horde's economic backbone for good.",
     "fun_fact": "Timur reportedly spared Muslim inhabitants during the sack of Azaq while showing no such mercy to others - a reminder that these campaigns were framed partly in religious terms.",
-    "image": "/images/sites/battle-terek.jpg",
+    "image": "/images/sites/terek.webp",
     "quiz": {
       "question": "What followed Timur's victory at the Terek River in 1395?",
       "options": [

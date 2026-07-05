@@ -12,6 +12,7 @@ import ModeToggle, { type MapMode } from "@/components/Controls/ModeToggle";
 import RouteLegend from "@/components/Controls/RouteLegend";
 import MarkerLegend from "@/components/Controls/MarkerLegend";
 import ScoreBadge from "@/components/Controls/ScoreBadge";
+import SiteDirectory from "@/components/Directory/SiteDirectory";
 
 // ChatBot uses browser APIs, so it must not render on the server.
 const ChatBot = dynamic(() => import("@/components/Chat/ChatBot"), { ssr: false });
@@ -36,10 +37,15 @@ function isVisibleAt(site: Site, year: number): boolean {
   return site.founded <= year && year <= end;
 }
 
+function clamp(value: number, lo: number, hi: number): number {
+  return Math.max(lo, Math.min(hi, value));
+}
+
 export default function Home() {
   const [year, setYear] = useState(1357); // open near the empire's peak
   const [mode, setMode] = useState<MapMode>("sites");
   const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [directoryOpen, setDirectoryOpen] = useState(false);
   // Quiz answers: siteId → chosen option index. First answer per site is final,
   // so points can't be farmed by re-answering.
   const [quizAnswers, setQuizAnswers] = useState<Record<string, number>>({});
@@ -84,6 +90,24 @@ export default function Home() {
     );
   }
 
+  // Picking from the directory: snap the timeline to a year where the item
+  // actually exists (so the map context matches), then open its panel.
+  function openSiteFromDirectory(site: Site) {
+    const end = site.destroyed ?? YEAR_MAX;
+    setYear((y) => (site.founded <= y && y <= end ? y : clamp(y, site.founded, end)));
+    setSelectedId(site.id);
+    setDirectoryOpen(false);
+  }
+
+  function openRouteFromDirectory(route: Route) {
+    setMode("routes"); // routes only render/resolve in routes mode
+    setYear((y) =>
+      isRouteActiveAt(route, y) ? y : clamp(y, route.active_from, route.active_to)
+    );
+    setSelectedId(route.id);
+    setDirectoryOpen(false);
+  }
+
   const quizAnsweredIndex =
     selection && !("route_type" in selection)
       ? quizAnswers[selection.id]
@@ -91,14 +115,23 @@ export default function Home() {
 
   return (
     <main className="relative h-screen w-screen overflow-hidden">
-      {/* Title overlay */}
-      <div className="pointer-events-none absolute left-4 top-4 z-[500] max-w-sm rounded-lg bg-[#f4ecd8]/90 px-4 py-3 shadow-md backdrop-blur-sm">
-        <h1 className="text-lg font-bold leading-tight text-[#3a2f1b]">
-          Алтын Орда, Уақыт Саяхаты
-        </h1>
-        <p className="text-sm text-[#7a6a48]">
-          Golden Horde: A Journey Through Time
-        </p>
+      {/* Title + Browse button, top-left */}
+      <div className="absolute left-4 top-4 z-[500] flex max-w-sm flex-col items-start gap-2">
+        <div className="pointer-events-none rounded-lg bg-[#f4ecd8]/90 px-4 py-3 shadow-md backdrop-blur-sm">
+          <h1 className="text-lg font-bold leading-tight text-[#3a2f1b]">
+            Алтын Орда, Уақыт Саяхаты
+          </h1>
+          <p className="text-sm text-[#7a6a48]">
+            Golden Horde: A Journey Through Time
+          </p>
+        </div>
+        <button
+          onClick={() => setDirectoryOpen(true)}
+          className="pointer-events-auto flex items-center gap-2 rounded-full border border-[#d8cba8] bg-[#f4ecd8]/90 px-3.5 py-1.5 text-sm font-semibold text-[#7a6a48] shadow-md backdrop-blur-sm transition-colors hover:bg-[#efe6cf] hover:text-[#3a2f1b]"
+        >
+          <span aria-hidden>📖</span>
+          Browse all
+        </button>
       </div>
 
       {/* Sites / Routes toggle, top-center */}
@@ -154,8 +187,19 @@ export default function Home() {
         onQuizAnswer={handleQuizAnswer}
       />
 
-      {/* AI Historian chatbot — floating button + sidebar */}
-      <ChatBot />
+      {/* Hidden directory of every site, battle, and route */}
+      <SiteDirectory
+        open={directoryOpen}
+        onClose={() => setDirectoryOpen(false)}
+        sites={sites}
+        routes={ROUTES}
+        onPickSite={openSiteFromDirectory}
+        onPickRoute={openRouteFromDirectory}
+      />
+
+      {/* AI Historian chatbot — floating button + sidebar.
+          Passes the current map context so Bek knows what the user is viewing. */}
+      <ChatBot year={year} selectedName={selection?.name.en ?? null} />
     </main>
   );
 }

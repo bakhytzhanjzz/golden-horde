@@ -11,6 +11,13 @@ interface Message {
   streaming?: boolean;
 }
 
+interface ChatBotProps {
+  /** Current timeline year, forwarded to the model as map context. */
+  year?: number;
+  /** Name of the site/route currently open, forwarded as map context. */
+  selectedName?: string | null;
+}
+
 const SUGGESTED = [
   "Why did the Golden Horde fall apart?",
   "Tell me about Otrar and the Mongol invasion",
@@ -20,7 +27,7 @@ const SUGGESTED = [
 
 // ─── ChatBot Component ─────────────────────────────────────────────────────────
 
-export default function ChatBot() {
+export default function ChatBot({ year, selectedName }: ChatBotProps = {}) {
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
@@ -39,6 +46,19 @@ export default function ChatBot() {
     if (open) {
       setTimeout(() => inputRef.current?.focus(), 150);
     }
+  }, [open]);
+
+  // Close on Escape
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        abortRef.current?.abort();
+        setOpen(false);
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
   }, [open]);
 
   // Greet on first open
@@ -89,7 +109,10 @@ export default function ChatBot() {
         const res = await fetch("/api/chat", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ messages: history }),
+          body: JSON.stringify({
+            messages: history,
+            mapContext: { year, selected: selectedName ?? null },
+          }),
           signal: abortRef.current.signal,
         });
 
@@ -122,12 +145,6 @@ export default function ChatBot() {
           );
         }
 
-        // Mark done
-        setMessages((prev) =>
-          prev.map((m) =>
-            m.id === assistantMsgId ? { ...m, streaming: false } : m
-          )
-        );
       } catch (err: any) {
         if (err?.name !== "AbortError") {
           setMessages((prev) =>
@@ -139,12 +156,20 @@ export default function ChatBot() {
           );
         }
       } finally {
+        // Stop the blinking cursor whether we finished, errored, or were stopped.
+        setMessages((prev) =>
+          prev.map((m) => (m.streaming ? { ...m, streaming: false } : m))
+        );
         setLoading(false);
         abortRef.current = null;
       }
     },
-    [loading, messages]
+    [loading, messages, year, selectedName]
   );
+
+  const stopGeneration = useCallback(() => {
+    abortRef.current?.abort();
+  }, []);
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.key === "Enter" && !e.shiftKey) {
@@ -409,35 +434,37 @@ export default function ChatBot() {
               />
               <button
                 id="chat-send-btn"
-                aria-label="Send message"
-                onClick={() => sendMessage(input)}
-                disabled={loading || !input.trim()}
+                aria-label={loading ? "Stop generating" : "Send message"}
+                onClick={() => (loading ? stopGeneration() : sendMessage(input))}
+                disabled={!loading && !input.trim()}
                 style={{
-                  background:
-                    loading || !input.trim()
-                      ? "rgba(200,150,62,0.25)"
-                      : "linear-gradient(135deg, #c8963e, #8b5e1a)",
+                  background: loading
+                    ? "linear-gradient(135deg, #a3502e, #7a2f1a)"
+                    : !input.trim()
+                    ? "rgba(200,150,62,0.25)"
+                    : "linear-gradient(135deg, #c8963e, #8b5e1a)",
                   border: "none",
                   borderRadius: "8px",
                   width: "34px",
                   height: "34px",
-                  cursor: loading || !input.trim() ? "not-allowed" : "pointer",
+                  cursor: !loading && !input.trim() ? "not-allowed" : "pointer",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  fontSize: "16px",
+                  fontSize: loading ? "13px" : "16px",
+                  color: "#f4ecd8",
                   flexShrink: 0,
                   transition: "background 0.15s, transform 0.1s",
                 }}
                 onMouseEnter={(e) => {
-                  if (!loading && input.trim())
+                  if (loading || input.trim())
                     (e.currentTarget as HTMLButtonElement).style.transform = "scale(1.08)";
                 }}
                 onMouseLeave={(e) => {
                   (e.currentTarget as HTMLButtonElement).style.transform = "scale(1)";
                 }}
               >
-                {loading ? "⏳" : "➤"}
+                {loading ? "■" : "➤"}
               </button>
             </div>
             <p
@@ -446,9 +473,12 @@ export default function ChatBot() {
                 fontSize: "11px",
                 margin: "6px 0 0",
                 textAlign: "center",
+                lineHeight: 1.5,
               }}
             >
-              Powered by Gemini · Enter to send · Shift+Enter for newline
+              AI-generated — verify important facts.
+              <br />
+              Powered by Gemini · Enter to send · Shift+Enter for newline · Esc to close
             </p>
           </div>
         </aside>
@@ -462,53 +492,78 @@ export default function ChatBot() {
 function MessageBubble({ msg }: { msg: Message }) {
   const isUser = msg.role === "user";
 
-  // Lightweight markdown renderer: bold, italic, inline code, line breaks
+  // Parse inline markdown within a single line: bold, italic, inline code.
+  function renderInline(line: string): React.ReactNode[] {
+    const segments: React.ReactNode[] = [];
+    const regex = /(\*\*(.+?)\*\*|\*(.+?)\*|`(.+?)`)/g;
+    let lastIndex = 0;
+    let match;
+    while ((match = regex.exec(line)) !== null) {
+      if (match.index > lastIndex) {
+        segments.push(line.slice(lastIndex, match.index));
+      }
+      if (match[2]) {
+        segments.push(<strong key={match.index}>{match[2]}</strong>);
+      } else if (match[3]) {
+        segments.push(<em key={match.index}>{match[3]}</em>);
+      } else if (match[4]) {
+        segments.push(
+          <code
+            key={match.index}
+            style={{
+              background: "rgba(200,150,62,0.15)",
+              borderRadius: "3px",
+              padding: "0 4px",
+              fontSize: "12px",
+            }}
+          >
+            {match[4]}
+          </code>
+        );
+      }
+      lastIndex = match.index + match[0].length;
+    }
+    if (lastIndex < line.length) segments.push(line.slice(lastIndex));
+    return segments;
+  }
+
+  // Block-level renderer: groups "- "/"* " runs into bullet lists, keeps blank
+  // lines as paragraph spacing, everything else as its own line.
   function renderMarkdown(text: string): React.ReactNode {
-    const parts: React.ReactNode[] = [];
     const lines = text.split("\n");
+    const blocks: React.ReactNode[] = [];
+    let listItems: React.ReactNode[] = [];
+
+    const flushList = (key: string) => {
+      if (listItems.length) {
+        blocks.push(
+          <ul key={`ul-${key}`} style={{ margin: "4px 0", paddingLeft: "18px" }}>
+            {listItems}
+          </ul>
+        );
+        listItems = [];
+      }
+    };
 
     lines.forEach((line, li) => {
-      // Process bold (**text**), italic (*text*), inline code (`code`)
-      const segments: React.ReactNode[] = [];
-      const regex = /(\*\*(.+?)\*\*|\*(.+?)\*|`(.+?)`)/g;
-      let lastIndex = 0;
-      let match;
-
-      while ((match = regex.exec(line)) !== null) {
-        if (match.index > lastIndex) {
-          segments.push(line.slice(lastIndex, match.index));
+      const bullet = /^\s*[-*]\s+(.*)/.exec(line);
+      if (bullet) {
+        listItems.push(
+          <li key={li} style={{ marginBottom: "2px" }}>
+            {renderInline(bullet[1])}
+          </li>
+        );
+      } else {
+        flushList(String(li));
+        if (line.trim() === "") {
+          blocks.push(<div key={`sp-${li}`} style={{ height: "6px" }} />);
+        } else {
+          blocks.push(<div key={li}>{renderInline(line)}</div>);
         }
-        if (match[2]) {
-          segments.push(<strong key={match.index}>{match[2]}</strong>);
-        } else if (match[3]) {
-          segments.push(<em key={match.index}>{match[3]}</em>);
-        } else if (match[4]) {
-          segments.push(
-            <code
-              key={match.index}
-              style={{
-                background: "rgba(200,150,62,0.15)",
-                borderRadius: "3px",
-                padding: "0 4px",
-                fontSize: "12px",
-              }}
-            >
-              {match[4]}
-            </code>
-          );
-        }
-        lastIndex = match.index + match[0].length;
       }
-
-      if (lastIndex < line.length) {
-        segments.push(line.slice(lastIndex));
-      }
-
-      parts.push(<span key={li}>{segments}</span>);
-      if (li < lines.length - 1) parts.push(<br key={`br-${li}`} />);
     });
-
-    return parts;
+    flushList("end");
+    return blocks;
   }
 
   return (
