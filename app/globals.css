@@ -83,18 +83,34 @@ body {
 /* --- Flowing route lines ----------------------------------------------------
    Each route type gets a marching-dash animation so trade/military/postal
    paths feel alive and directional. Dash sums match the offset for a
-   seamless loop. */
+   seamless loop.
+
+   We animate a registered <number> custom property and feed it into
+   stroke-dashoffset, rather than animating stroke-dashoffset directly. The
+   production CSS minifier (Lightning CSS) rewrites a bare `stroke-dashoffset:
+   -22` to `-22px`, and a px unit on this SVG property silently breaks the
+   animation in WebKit/Safari — so the effect vanished only in the built/
+   deployed app. A <number>-typed property stays unitless through minification
+   and interpolates smoothly, so dev and production behave identically. */
+@property --gh-dash {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 0;
+}
 .gh-route-trade {
   stroke-dasharray: 12 10;
+  stroke-dashoffset: var(--gh-dash);
   animation: gh-flow-22 1.3s linear infinite;
 }
 .gh-route-military {
   stroke-dasharray: 16 8;
+  stroke-dashoffset: var(--gh-dash);
   animation: gh-flow-24 0.85s linear infinite;
 }
 .gh-route-postal {
   stroke-dasharray: 1 11;
   stroke-linecap: round;
+  stroke-dashoffset: var(--gh-dash);
   animation: gh-flow-12 1.5s linear infinite;
 }
 .gh-route-selected {
@@ -103,17 +119,17 @@ body {
 
 @keyframes gh-flow-22 {
   to {
-    stroke-dashoffset: -22;
+    --gh-dash: -22;
   }
 }
 @keyframes gh-flow-24 {
   to {
-    stroke-dashoffset: -24;
+    --gh-dash: -24;
   }
 }
 @keyframes gh-flow-12 {
   to {
-    stroke-dashoffset: -12;
+    --gh-dash: -12;
   }
 }
 
