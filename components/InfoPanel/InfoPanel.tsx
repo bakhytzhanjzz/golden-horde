@@ -23,6 +23,8 @@ type InfoPanelProps = {
   onClose: () => void;
   quizAnsweredIndex?: number;
   onQuizAnswer: (siteId: string, index: number) => void;
+  /** When true, skip the dimming backdrop so the map stays visible/clickable. */
+  undimmed?: boolean;
 };
 
 const TYPE_EMBLEM: Record<SiteType, string> = {
@@ -117,6 +119,7 @@ export default function InfoPanel({
   onClose,
   quizAnsweredIndex,
   onQuizAnswer,
+  undimmed = false,
 }: InfoPanelProps) {
   const t = useStrings();
   const { lang } = useLang();
@@ -145,12 +148,17 @@ export default function InfoPanel({
 
   return (
     <>
-      {/* Backdrop */}
+      {/* Backdrop. When undimmed (opened by Bek), it's transparent and lets
+          clicks through so the map behind stays usable — close via the ✕. */}
       <div
         aria-hidden={!open}
         onClick={onClose}
-        className={`fixed inset-0 z-[1000] bg-black/30 transition-opacity duration-300 ${
-          open ? "opacity-100" : "pointer-events-none opacity-0"
+        className={`fixed inset-0 z-[1000] transition-opacity duration-300 ${
+          open
+            ? undimmed
+              ? "pointer-events-none bg-transparent"
+              : "bg-black/30 opacity-100"
+            : "pointer-events-none opacity-0"
         }`}
       />
 

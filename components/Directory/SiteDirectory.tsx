@@ -4,6 +4,8 @@ import { useMemo, useState } from "react";
 import type { Route, Site, SiteType } from "@/lib/types";
 import { siteTypeMeta } from "@/lib/siteMeta";
 import { ROUTE_STYLES } from "@/lib/routes";
+import { useLang, useStrings } from "@/lib/i18n";
+import { locName } from "@/lib/localize";
 
 type SiteDirectoryProps = {
   open: boolean;
@@ -16,12 +18,7 @@ type SiteDirectoryProps = {
 
 type Filter = "all" | "places" | "battles" | "routes";
 
-const FILTERS: { value: Filter; label: string }[] = [
-  { value: "all", label: "All" },
-  { value: "places", label: "Places" },
-  { value: "battles", label: "Battles" },
-  { value: "routes", label: "Routes" },
-];
+const FILTER_VALUES: Filter[] = ["all", "places", "battles", "routes"];
 
 const TYPE_EMBLEM: Record<SiteType, string> = {
   city: "🏛️",
@@ -45,25 +42,38 @@ export default function SiteDirectory({
 }: SiteDirectoryProps) {
   const [query, setQuery] = useState("");
   const [filter, setFilter] = useState<Filter>("all");
+  const t = useStrings();
+  const { lang } = useLang();
+
+  const filterLabel: Record<Filter, string> = {
+    all: t.filterAll,
+    places: t.filterPlaces,
+    battles: t.filterBattles,
+    routes: t.filterRoutes,
+  };
 
   const { places, battles, routeList } = useMemo(() => {
     const q = query.trim();
-    const inName = (n: string) => q === "" || matches(q, n);
+    // Match against every known name (localized + all originals) so search
+    // works regardless of the active language.
+    const inName = (name: { en: string; kz?: string; ru?: string }) =>
+      q === "" ||
+      [name.en, name.kz, name.ru].some((n) => n && matches(q, n));
 
     const places = sites
-      .filter((s) => s.type !== "battle" && inName(s.name.en))
-      .sort((a, b) => a.name.en.localeCompare(b.name.en));
+      .filter((s) => s.type !== "battle" && inName(s.name))
+      .sort((a, b) => locName(a.name, lang).localeCompare(locName(b.name, lang)));
 
     const battles = sites
-      .filter((s) => s.type === "battle" && inName(s.name.en))
+      .filter((s) => s.type === "battle" && inName(s.name))
       .sort((a, b) => a.founded - b.founded); // chronological — events read as a timeline
 
     const routeList = routes
-      .filter((r) => inName(r.name.en))
+      .filter((r) => inName(r.name))
       .sort((a, b) => a.active_from - b.active_from);
 
     return { places, battles, routeList };
-  }, [sites, routes, query]);
+  }, [sites, routes, query, lang]);
 
   const showPlaces = filter === "all" || filter === "places";
   const showBattles = filter === "all" || filter === "battles";
@@ -91,10 +101,8 @@ export default function SiteDirectory({
       >
         <header className="flex items-center justify-between border-b border-[#d8cba8] bg-[#efe6cf] px-5 py-4">
           <div>
-            <h2 className="text-lg font-bold text-[#3a2f1b]">Explore the Horde</h2>
-            <p className="text-xs text-[#9a8860]">
-              Jump to any site, battle, or route
-            </p>
+            <h2 className="text-lg font-bold text-[#3a2f1b]">{t.explore}</h2>
+            <p className="text-xs text-[#9a8860]">{t.exploreSub}</p>
           </div>
           <button
             onClick={onClose}
@@ -111,21 +119,21 @@ export default function SiteDirectory({
             type="search"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search by name…"
+            placeholder={t.searchPlaceholder}
             className="w-full rounded-lg border border-[#d8cba8] bg-[#faf5e6] px-3 py-2 text-sm text-[#3a2f1b] placeholder:text-[#b3a37c] focus:border-[#8a5a2b] focus:outline-none"
           />
           <div className="flex flex-wrap gap-1.5">
-            {FILTERS.map((f) => (
+            {FILTER_VALUES.map((f) => (
               <button
-                key={f.value}
-                onClick={() => setFilter(f.value)}
+                key={f}
+                onClick={() => setFilter(f)}
                 className={`rounded-full px-3 py-1 text-xs font-semibold transition-colors ${
-                  filter === f.value
+                  filter === f
                     ? "bg-[#8a5a2b] text-[#f4ecd8]"
                     : "bg-[#e6dcc0] text-[#7a6a48] hover:bg-[#ddd0af]"
                 }`}
               >
-                {f.label}
+                {filterLabel[f]}
               </button>
             ))}
           </div>
@@ -135,18 +143,18 @@ export default function SiteDirectory({
         <div className="flex-1 overflow-y-auto px-3 py-3">
           {total === 0 && (
             <p className="px-2 py-6 text-center text-sm text-[#9a8860]">
-              Nothing matches “{query}”.
+              {t.nothingMatches} “{query}”.
             </p>
           )}
 
           {showPlaces && places.length > 0 && (
-            <Group label={`Places (${places.length})`}>
+            <Group label={`${t.filterPlaces} (${places.length})`}>
               {places.map((s) => (
                 <Row
                   key={s.id}
                   emblem={TYPE_EMBLEM[s.type]}
-                  title={s.name.en}
-                  subtitle={`${siteTypeMeta(s.type).label} · ${s.founded}${
+                  title={locName(s.name, lang)}
+                  subtitle={`${t.siteType[s.type]} · ${s.founded}${
                     s.destroyed ? `–${s.destroyed}` : ""
                   }`}
                   accent={siteTypeMeta(s.type).color}
@@ -157,13 +165,13 @@ export default function SiteDirectory({
           )}
 
           {showBattles && battles.length > 0 && (
-            <Group label={`Battles (${battles.length})`}>
+            <Group label={`${t.filterBattles} (${battles.length})`}>
               {battles.map((s) => (
                 <Row
                   key={s.id}
                   emblem={TYPE_EMBLEM.battle}
-                  title={s.name.en}
-                  subtitle={`Battle · ${s.founded}`}
+                  title={locName(s.name, lang)}
+                  subtitle={`${t.siteType.battle} · ${s.founded}`}
                   accent={siteTypeMeta("battle").color}
                   onClick={() => onPickSite(s)}
                 />
@@ -172,13 +180,13 @@ export default function SiteDirectory({
           )}
 
           {showRoutes && routeList.length > 0 && (
-            <Group label={`Routes (${routeList.length})`}>
+            <Group label={`${t.filterRoutes} (${routeList.length})`}>
               {routeList.map((r) => (
                 <Row
                   key={r.id}
                   emblem="〰️"
-                  title={r.name.en}
-                  subtitle={`${ROUTE_STYLES[r.route_type].label} · ${r.active_from}–${r.active_to}`}
+                  title={locName(r.name, lang)}
+                  subtitle={`${t.routeType[r.route_type]} · ${r.active_from}–${r.active_to}`}
                   accent={ROUTE_STYLES[r.route_type].color}
                   onClick={() => onPickRoute(r)}
                 />

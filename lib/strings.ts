@@ -31,6 +31,11 @@ export type Strings = {
   activeFrom: string;
   activeUntil: string;
   routeSuffix: string;
+  play: string;
+  pause: string;
+  replay: string;
+  reign: string;
+  modernBorders: string;
   quickQuiz: string;
   correct: string;
   notQuitePrefix: string;
@@ -84,6 +89,11 @@ export const STRINGS: Record<Lang, Strings> = {
     activeFrom: "Active from",
     activeUntil: "Active until",
     routeSuffix: "route",
+    play: "Play",
+    pause: "Pause",
+    replay: "Replay",
+    reign: "Reign",
+    modernBorders: "Modern borders",
     quickQuiz: "Quick quiz",
     correct: "Correct! +1 point",
     notQuitePrefix: "Not quite — the answer is",
@@ -142,6 +152,11 @@ export const STRINGS: Record<Lang, Strings> = {
     activeFrom: "Басталуы",
     activeUntil: "Аяқталуы",
     routeSuffix: "жолы",
+    play: "Ойнату",
+    pause: "Кідірту",
+    replay: "Қайталау",
+    reign: "Билігі",
+    modernBorders: "Қазіргі шекаралар",
     quickQuiz: "Шағын сынақ",
     correct: "Дұрыс! +1 ұпай",
     notQuitePrefix: "Дұрыс емес — дұрыс жауабы:",

@@ -16,8 +16,12 @@ import {
   snapshotCentroid,
 } from "@/lib/borders";
 import { ROUTE_STYLES } from "@/lib/routes";
+import { useLang } from "@/lib/i18n";
+import { locName } from "@/lib/localize";
 import BorderLayer from "./BorderLayer";
 import BorderLabel from "./BorderLabel";
+import ModernBorders from "./ModernBorders";
+import SuccessorLayer from "./SuccessorLayer";
 import type { MapMode } from "@/components/Controls/ModeToggle";
 
 type MapViewProps = {
@@ -27,6 +31,7 @@ type MapViewProps = {
   year: number;
   selectedId: string | null;
   onSelect: (id: string) => void;
+  showModern: boolean;
 };
 
 // Center roughly on the Golden Horde region (lower Volga / western steppe),
@@ -162,7 +167,10 @@ export default function MapView({
   year,
   selectedId,
   onSelect,
+  showModern,
 }: MapViewProps) {
+  const { lang } = useLang();
+
   // Recompute icons only when the site set or selection changes.
   const icons = useMemo(() => {
     const map = new Map<string, L.DivIcon>();
@@ -214,6 +222,12 @@ export default function MapView({
         />
       ))}
 
+      {/* Successor khanates — fade in as the empire fragments in the 1400s. */}
+      <SuccessorLayer year={year} />
+
+      {/* Present-day country borders, toggled on to contrast then vs now. */}
+      {showModern && <ModernBorders />}
+
       {/* ROUTES — flowing arcs that connect the cities. Drawn beneath the
           markers so the city pins always sit on top. */}
       {showRoutes &&
@@ -250,7 +264,7 @@ export default function MapView({
                 eventHandlers={{ click: () => onSelect(route.id) }}
               >
                 <Tooltip sticky opacity={1}>
-                  {route.name.en}
+                  {locName(route.name, lang)}
                 </Tooltip>
               </Polyline>
             </Fragment>
@@ -272,7 +286,7 @@ export default function MapView({
             opacity={1}
             className="gh-city-tooltip"
           >
-            {site.name.en}
+            {locName(site.name, lang)}
           </Tooltip>
         </Marker>
       ))}

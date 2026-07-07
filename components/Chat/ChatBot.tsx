@@ -1,6 +1,8 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { ACTIONS_RE, type MapAction } from "@/lib/mapActions";
+import { useStrings } from "@/lib/i18n";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -16,18 +18,22 @@ interface ChatBotProps {
   year?: number;
   /** Name of the site/route currently open, forwarded as map context. */
   selectedName?: string | null;
+  /** Applies map actions Bek requests via function-calling. */
+  onAction?: (actions: MapAction[]) => void;
 }
 
-const SUGGESTED = [
-  "Why did the Golden Horde fall apart?",
-  "Tell me about Otrar and the Mongol invasion",
-  "What was the Silk Road like under the Horde?",
-  "Who was Batu Khan?",
-];
+// Strips the actions marker (complete or still-streaming) from displayed text.
+function stripActions(text: string): string {
+  return text
+    .replace(ACTIONS_RE, "")
+    .replace(/\[\[GH_ACTIONS\]\][\s\S]*$/, "")
+    .replace(/^\s+/, "");
+}
 
 // ─── ChatBot Component ─────────────────────────────────────────────────────────
 
-export default function ChatBot({ year, selectedName }: ChatBotProps = {}) {
+export default function ChatBot({ year, selectedName, onAction }: ChatBotProps = {}) {
+  const t = useStrings();
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
@@ -64,16 +70,18 @@ export default function ChatBot({ year, selectedName }: ChatBotProps = {}) {
   // Greet on first open
   useEffect(() => {
     if (open && messages.length === 0) {
-      setMessages([
-        {
-          id: "welcome",
-          role: "model",
-          content:
-            "Salam! I'm **Bek**, your AI historian-guide to the Golden Horde. 🏺\n\nAsk me anything about the empire's cities, trade routes, khans, or legacy — I'm here to bring the history to life!",
-        },
-      ]);
+      setMessages([{ id: "welcome", role: "model", content: t.chatWelcome }]);
     }
-  }, [open, messages.length]);
+  }, [open, messages.length, t]);
+
+  // Keep the greeting in sync with the active language until the user replies.
+  useEffect(() => {
+    setMessages((prev) =>
+      prev.length === 1 && prev[0].id === "welcome"
+        ? [{ ...prev[0], content: t.chatWelcome }]
+        : prev
+    );
+  }, [t]);
 
   const sendMessage = useCallback(
     async (text: string) => {
@@ -128,16 +136,38 @@ export default function ChatBot({ year, selectedName }: ChatBotProps = {}) {
           return;
         }
 
-        // Read the streaming plain-text response
+        // Read the streaming plain-text response. It may carry a leading
+        // actions block (from Bek's map function-call) which we extract and
+        // apply once, then strip from what we display.
         const reader = res.body!.getReader();
         const decoder = new TextDecoder();
         let accumulated = "";
+        let actionsApplied = false;
 
         while (true) {
           const { done, value } = await reader.read();
           if (done) break;
           accumulated += decoder.decode(value, { stream: true });
-          const snap = accumulated;
+
+          if (!actionsApplied) {
+            const m = ACTIONS_RE.exec(accumulated);
+            if (m) {
+              actionsApplied = true;
+              try {
+                const acts = JSON.parse(m[1]) as MapAction[];
+                if (Array.isArray(acts) && acts.length) {
+                  onAction?.(acts);
+                  // If Bek opened a site/route card, step out of the way so the
+                  // user can see the map and the card behind the chat.
+                  if (acts.some((a) => a.siteId || a.routeId)) setOpen(false);
+                }
+              } catch {
+                /* ignore malformed action payloads */
+              }
+            }
+          }
+
+          const snap = stripActions(accumulated);
           setMessages((prev) =>
             prev.map((m) =>
               m.id === assistantMsgId ? { ...m, content: snap } : m
@@ -164,7 +194,7 @@ export default function ChatBot({ year, selectedName }: ChatBotProps = {}) {
         abortRef.current = null;
       }
     },
-    [loading, messages, year, selectedName]
+    [loading, messages, year, selectedName, onAction]
   );
 
   const stopGeneration = useCallback(() => {
@@ -291,10 +321,10 @@ export default function ChatBot({ year, selectedName }: ChatBotProps = {}) {
             </div>
             <div style={{ flex: 1 }}>
               <div style={{ color: "#f4d98a", fontWeight: 700, fontSize: "15px", lineHeight: 1.2 }}>
-                Bek — AI Historian
+                {t.chatName}
               </div>
               <div style={{ color: "#9b8060", fontSize: "12px" }}>
-                Golden Horde Heritage Guide
+                {t.chatRole}
               </div>
             </div>
             <button
@@ -340,8 +370,8 @@ export default function ChatBot({ year, selectedName }: ChatBotProps = {}) {
             {/* Suggested prompts — show only when there's just the welcome message */}
             {messages.length === 1 && (
               <div style={{ display: "flex", flexDirection: "column", gap: "8px", marginTop: "4px" }}>
-                <p style={{ color: "#9b8060", fontSize: "12px", margin: 0 }}>Try asking:</p>
-                {SUGGESTED.map((s) => (
+                <p style={{ color: "#9b8060", fontSize: "12px", margin: 0 }}>{t.chatTryAsking}</p>
+                {t.chatSuggested.map((s) => (
                   <button
                     key={s}
                     onClick={() => sendMessage(s)}
@@ -410,7 +440,7 @@ export default function ChatBot({ year, selectedName }: ChatBotProps = {}) {
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={handleKeyDown}
-                placeholder="Ask about the Golden Horde…"
+                placeholder={t.chatPlaceholder}
                 rows={1}
                 disabled={loading}
                 style={{
@@ -476,9 +506,9 @@ export default function ChatBot({ year, selectedName }: ChatBotProps = {}) {
                 lineHeight: 1.5,
               }}
             >
-              AI-generated — verify important facts.
+              {t.chatDisclaimer}
               <br />
-              Powered by Gemini · Enter to send · Shift+Enter for newline · Esc to close
+              {t.chatFooter}
             </p>
           </div>
         </aside>
