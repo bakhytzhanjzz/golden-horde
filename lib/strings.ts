@@ -59,7 +59,7 @@ export type Strings = {
 
 export const STRINGS: Record<Lang, Strings> = {
   en: {
-    subtitle: "Golden Horde: A Journey Through Time",
+    subtitle: "Golden Horde: Dala Zholy",
     browseAll: "Browse all",
     sites: "Sites",
     routes: "Routes",
@@ -122,7 +122,7 @@ export const STRINGS: Record<Lang, Strings> = {
     ],
   },
   kz: {
-    subtitle: "Алтын Орда: уақыт арқылы саяхат",
+    subtitle: "Алтын Орда: Дала Жолы",
     browseAll: "Барлығын қарау",
     sites: "Орындар",
     routes: "Жолдар",
